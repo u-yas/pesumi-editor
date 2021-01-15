@@ -1,0 +1,18 @@
+{
+        "node": [
+                {
+                        "command": "start"
+                },
+                {
+                        "label": "冒頭",
+                        "command": "bgimage",
+                        "option": {
+                                "fadeIn": 200
+                        }
+                },
+                {
+                        "command": "text",
+                        "type":"voi"
+                }
+        ]
+}

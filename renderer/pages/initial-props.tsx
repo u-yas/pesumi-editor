@@ -26,7 +26,7 @@ const WithInitialProps = ({ items }: Props) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const items: User[] = await findAll()
 
   return { props: { items } }

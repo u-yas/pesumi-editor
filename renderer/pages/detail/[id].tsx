@@ -17,7 +17,7 @@ type Props = {
 const InitialPropsDetail = ({ item, errors }: Props) => {
   if (errors) {
     return (
-      <Layout title={`Error | Next.js + TypeScript + Electron Example`}>
+      <Layout title={'Error | Next.js + TypeScript + Electron Example'}>
         <p>
           <span style={{ color: 'red' }}>Error:</span> {errors}
         </p>
@@ -47,14 +47,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const item = await findData(Array.isArray(id) ? id[0] : id)
     return {
       props: {
-        item,
-      },
+        item
+      }
     }
   } catch (err) {
     return {
       props: {
-        errors: err.message,
-      },
+        errors: err.message
+      }
     }
   }
 }
