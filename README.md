@@ -1,8 +1,6 @@
 ### 流れ
 
-生成したJSONファイルと画像ファイルをVstoryHubにデプロイする
-
+PeSuMi-editorで作成したゲームをPeSuMi-Hubで公開する、公開、非公開設定、課金設定、アナリティクス設定
 ### 将来的に
-- 音声ファイルもデプロイできるようにしてフルボイス対応
-- visual story hubを作って有料、無料で連載を可能にする
-- story writerとstory illustolatorをつなげるvisual story Partners
+-  PeSuMiで公開
+- PeSuMi-Connectでイラストレーターとライターが募集する
