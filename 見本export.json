@@ -1,18 +1,35 @@
 {
+        "project": "u-yasの大冒険",
+        "projectId": "jfioeafhau",
+        "author": {
+                "writer": ["u-yas"],
+                "illustrator": ["pompompurin"]
+        },
         "node": [
                 {
-                        "command": "start"
-                },
-                {
-                        "label": "冒頭",
-                        "command": "bgimage",
-                        "option": {
-                                "fadeIn": 200
-                        }
-                },
-                {
-                        "command": "text",
-                        "type":"voi"
+                        "label":"冒頭",
+                        "id":4353534,
+                        "senentece": [
+                                {
+                                        "id":434324,
+                                        "command":"text",
+                                        "option":{
+                                                "type": "normal",
+                                                "font": "nard-font"
+                                        },
+                                        "text":"fjeohafheiuahfuiahfiuhaiuefh"
+                                },
+
+                                {
+                                        "id":54353,
+                                        "command": "text",
+                                        "option": {
+                                                "type":"voice",
+                                                "path":"./u-yas/feafea"
+                                        }
+                                }
+                        ]
                 }
+
         ]
 }
