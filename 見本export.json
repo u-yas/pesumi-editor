@@ -9,9 +9,8 @@
                 {
                         "label":"冒頭",
                         "id":4353534,
-                        "senentece": [
+                        "page": [
                                 {
-                                        "id":434324,
                                         "command":"text",
                                         "option":{
                                                 "type": "normal",
@@ -21,7 +20,6 @@
                                 },
 
                                 {
-                                        "id":54353,
                                         "command": "text",
                                         "option": {
                                                 "type":"voice",
