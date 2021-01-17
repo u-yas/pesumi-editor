@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Editor = (): JSX.Element => {
+const CommandList = (): JSX.Element => {
   // ユーザーが書き込んだテキストファイルを管理するステート
   const [fileState, setFileState] = useState([''])
   return (
@@ -10,4 +10,4 @@ const Editor = (): JSX.Element => {
   )
 }
 
-export default Editor
+export default CommandList

@@ -1,8 +1,8 @@
 import { remote } from 'electron'
 import { readFile } from 'fs'
 
-export class PesumiFile {
-  pesumiFile!: string;
+export class PesumiData {
+  pesumiFileData!: string
   constructor () {
     const dialog = remote.dialog
     dialog.showOpenDialog(
@@ -19,10 +19,10 @@ export class PesumiFile {
     ).then((fileName) => {
       if (fileName) {
         readFile(fileName.filePaths[0], { encoding: 'utf-8' }, (err, data) => {
-          if (err) {
-            alert(err)
+          if (data === undefined) {
+            throw err
           } else {
-            this.pesumiFile = data
+            this.pesumiFileData = data
           }
         })
       }

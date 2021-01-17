@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
-const Editor = (): JSX.Element => {
+const NodeView = (): JSX.Element => {
   // ユーザーが書き込んだテキストファイルを管理するステート
-  const [fileState, setFileState] = useState([''])
   return (
     <div>
 
@@ -10,4 +9,4 @@ const Editor = (): JSX.Element => {
   )
 }
 
-export default Editor
+export default NodeView

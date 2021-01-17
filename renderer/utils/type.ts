@@ -1,10 +1,17 @@
 
-export type Command =
+export type GameCommand =
+  | 'init'
   | 'text'
   | 'BackgroundImage'
   | 'Bgm'
   | 'Character'
   | 'Character';
+
+export type FileCommand =
+  | 'addFile'
+  | 'deleteFile'
+  | 'openFile'
+  | 'createFile';
 
 export interface OptionClass {
   type: string;
@@ -13,7 +20,7 @@ export interface OptionClass {
 }
 
 export interface Page {
-  command: Command;
+  command: GameCommand;
   option: OptionClass | string;
   text?: string;
 }
@@ -36,6 +43,16 @@ export interface Project {
   node: Node[];
 }
 
-export interface Action {
-  command: Command,
+export interface GameData {
+  project: Project;
+}
+export interface GameAction {
+  command: GameCommand,
+  payloadProject:Project
+  payloadNode: Node
+  payloadPage: Page
+}
+
+export interface FileAction {
+  type: FileCommand
 }
