@@ -1,8 +1,6 @@
-import { useState } from 'react'
 
-const CommandList = (): JSX.Element => {
+const CommandList:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
-  const [fileState, setFileState] = useState([''])
   return (
     <div>
 

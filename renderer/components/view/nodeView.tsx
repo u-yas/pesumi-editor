@@ -1,6 +1,5 @@
-import { useState } from 'react'
 
-const NodeView = (): JSX.Element => {
+const NodeView:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
   return (
     <div>

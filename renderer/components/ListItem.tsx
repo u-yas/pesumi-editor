@@ -6,7 +6,7 @@ type Props = {
   data: User
 }
 
-const ListItem = ({ data }: Props) :JSX.Element => (
+const ListItem = ({ data }: Props) :React.FC => (
   <Link href="/detail/[id]" as={`/detail/${data.id}`}>
     <a>
       {data.id}: {data.name}

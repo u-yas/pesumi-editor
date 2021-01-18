@@ -8,7 +8,7 @@ type Props = {
   title?: string
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props): JSX.Element => {
+const Layout:React.FC<Props> = ({ children, title = 'This is the default title' }: Props) => {
   return (
     <div>
       <Head>

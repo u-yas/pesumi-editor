@@ -1,18 +1,34 @@
-
-export type GameCommand =
+/**
+ * 編集するデータのActionコマンド
+ */
+export type DataActionType =
   | 'init'
+  | 'addPage' // 指定したインデックスにページを追加する
+  | 'deletePage' // 指定したインデックスのページを削除する
+  | 'addNode' // ノードを指定したインデックスに付与する
+  | 'deleteNode' // ノードを削除する。削除した後の前後のnodeをつなげる
+  | 'movePrevious' // 次のページに移動する
+  | 'moveNext';
+
+export type EditorCommand =
   | 'text'
+  | 'setBackgroundImage'
+  | 'setCharacter'
+  | 'changeCharacter'
+  | 'setBgm';
+
+/**
+ * 実際のゲーム画面にActionを起こすCommand
+ */
+export type GameCommand =
   | 'BackgroundImage'
   | 'Bgm'
   | 'Character'
   | 'Character';
 
-export type FileCommand =
-  | 'addFile'
-  | 'deleteFile'
-  | 'openFile'
-  | 'createFile';
-
+export interface File {
+  text: string
+}
 export interface OptionClass {
   type: string;
   font?: string;
@@ -20,7 +36,7 @@ export interface OptionClass {
 }
 
 export interface Page {
-  command: GameCommand;
+  command: DataActionType;
   option: OptionClass | string;
   text?: string;
 }
@@ -46,13 +62,16 @@ export interface Project {
 export interface GameData {
   project: Project;
 }
-export interface GameAction {
-  command: GameCommand,
-  payloadProject:Project
-  payloadNode: Node
-  payloadPage: Page
+
+export interface DataAction {
+  command: DataActionType
+  payloadProjectIndex?: number // NodeやProjectの編集先の配列のインデックス
+  payloadNodeIndex?: number
+  payloadProject?:Project
+  payloadNode?: Node
+  payloadPage?: Page
 }
 
 export interface FileAction {
-  type: FileCommand
+  command: EditorCommand
 }

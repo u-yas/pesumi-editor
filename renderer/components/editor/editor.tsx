@@ -1,13 +1,8 @@
-import { useState } from 'react'
 
-const Editor = (): JSX.Element => {
-  // ユーザーが書き込んだテキストファイルを管理するステート
-  const [fileState, setFileState] = useState([''])
-  return (
-    <div>
-
-    </div>
-  )
-}
+const Editor:React.FC = () => (
+  <div>
+    editor
+  </div>
+)
 
 export default Editor

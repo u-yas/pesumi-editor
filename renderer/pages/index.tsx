@@ -7,7 +7,7 @@ import styles from './styles/index.module.scss'
 // 「作成したゲームを配布する」、
 // 「このソフトの使い方」の画面をそれぞれ用意する
 
-const IndexPage = ():JSX.Element => {
+const IndexPage:React.FC = () => {
   return (
     <Layout title="VstoryMaker">
       <h1 className={styles['pesumi-logo']}>Pesumi Editor<span role="img" aria-label="">👋</span></h1>

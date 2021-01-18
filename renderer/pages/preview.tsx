@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
 
-const PreviewPage = ():JSX.Element => {
+const PreviewPage:React.FC = () => {
   return (
     <Layout title="プレビュー">
     </Layout>

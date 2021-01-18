@@ -1,0 +1,5 @@
+pesumiGameReducerにファイルを編集するアクションを追加していく
+
+editorを作る←最優先
+
+view＜ーエクスポートするjson形式
