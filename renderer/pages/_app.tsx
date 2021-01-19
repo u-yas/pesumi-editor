@@ -1,6 +1,7 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
 import { useReducer, createContext, useContext } from 'react'
+import Header from '../components/header'
 import * as Type from '../utils/type'
 
 /**
@@ -78,11 +79,14 @@ const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
   const [fileState, fileDispatch] = useReducer(EditorCommandReducer, initText)
 
   return (
+    <>
     <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
       <editorFileContext.Provider value = {{ fileState, fileDispatch }}>
+      <Header />
         <Component {...pageProps} />
       </editorFileContext.Provider>
-</pesumiGameContext.Provider>
+    </pesumiGameContext.Provider>
+    </>
   )
 }
 

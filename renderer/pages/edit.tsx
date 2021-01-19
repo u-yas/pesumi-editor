@@ -58,9 +58,9 @@ const EditPage:NextPage = () => {
           編集中のプロジェクトを開く
         </div>
         : <Resizable >
+                <CommandList />
                 <Editor />
                 <NodeList />
-                <CommandList />
             </Resizable>
           }
       </>
