@@ -25,7 +25,7 @@ const NodeComponent:React.FC<Props> = (props: Props) => {
               <ul style={{ listStyle: 'none' }}>
               {props.node.page.map((value:Page, index:number) => {
                 return (
-                    <li key={index}>
+                    <li key={index} className={styles['page-wrapper']}>
                       <div className={styles.command}>
                         {value.command}
                       </div>
