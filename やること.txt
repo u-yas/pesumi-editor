@@ -2,4 +2,4 @@ pesumiGameReducerにファイルを編集するアクションを追加してい
 
 editorを作る←最優先
 
-view＜ーエクスポートするjson形式
+view＜ーエクスポートするjson形式に合わせて

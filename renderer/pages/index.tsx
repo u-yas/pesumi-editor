@@ -1,3 +1,4 @@
+import { NextPage } from 'next'
 import Link from 'next/link'
 import Layout from '../components/Layout'
 import styles from './styles/index.module.scss'
@@ -7,7 +8,7 @@ import styles from './styles/index.module.scss'
 // 「作成したゲームを配布する」、
 // 「このソフトの使い方」の画面をそれぞれ用意する
 
-const IndexPage:React.FC = () => {
+const IndexPage:NextPage = () => {
   return (
     <Layout title="VstoryMaker">
       <h1 className={styles['pesumi-logo']}>Pesumi Editor<span role="img" aria-label="">👋</span></h1>

@@ -3,26 +3,23 @@ import { Resizable } from 're-resizable'
 import { useLayoutEffect, useReducer, createContext, useContext, useState } from 'react'
 import * as Type from '../utils/type'
 import Editor from '../components/editor/editor'
-import NodeView from '../components/view/nodeView'
+import NodeView from '../components/view/nodeList'
 import CommandList from '../components/command/commandList'
 import styles from './styles/popup.module.scss'
 import fs from 'fs'
 import { remote } from 'electron'
-/**
- * 開いたときに新規作成化既存のファイルかを選択する。
- * 新規の場合->プロジェクト名を入力させる
- * 既存のファイルを開く場合は、エクスポートする既存のファイルのフォルダを選択する
- */
+import { NextPage } from 'next'
+
 /**
  * .pesumiファイル(中身はjson)のコンテキストの初期化
  */
 const pesumiGameContext = createContext({} as {
-  state: Type.Project,
-  dispatch: React.Dispatch<Type.DataAction>
+  pesumiState: Type.Project,
+  pesumiDispatch: React.Dispatch<Type.DataAction>
 })
 
 /**
- *  ファイルに書かれているコマンドをJSON形式の配列する処理を管理するReducer
+ *  JSON形式の配列の処理を管理するReducer
  * */
 export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):Type.Project => {
   switch (action.command) {
@@ -40,12 +37,25 @@ export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):T
 }
 
 /**
+ * エディターに書かれているファイルを管理するContext
+ */
+const editorFileContext = createContext({} as {
+   fileState: string,
+    fileDispatch: React.Dispatch<Type.FileAction>
+  })
+
+/**
  * ファイルを読み込んだり、消したり、ファイル内のデータをパースしたりを管理するためのReducer
  * @param state
  * @param action
  */
-export const EditorCommandReducer = (state:Type.File, action: Type.FileAction) => {
-
+export const EditorCommandReducer = (state: string, action: Type.FileAction):string => {
+  switch (action.command) {
+    case 'text':
+      return state
+    default:
+      return state
+  }
 }
 /**
  * reducerの初期データ
@@ -59,11 +69,21 @@ const initialState:Type.Project = {
   },
   node: []
 }
-export const usePesumi = ():{ state: Type.Project; dispatch: React.Dispatch<Type.DataAction>; } => useContext(pesumiGameContext)
+const initText = ''
 
-const EditPage:React.FC = () => {
+// カスタムhooks
+export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.DataAction>; } => useContext(pesumiGameContext)
+
+/**
+ * 開いたときに新規作成化既存のファイルかを選択する。
+ * 新規の場合->プロジェクト名を入力させる
+ * 既存のファイルを開く場合は、エクスポートする既存のファイルのフォルダを選択する
+ */
+const EditPage:NextPage = () => {
   // エクスポートするjsonデータのstate
-  const [state, dispatch] = useReducer(pesumiGameReducer, initialState)
+  const [pesumiState, pesumiDispatch] = useReducer(pesumiGameReducer, initialState)
+  // editorのテキストのstate
+  const [fileState, fileDispatch] = useReducer(EditorCommandReducer, initText)
 
   const [initPopup, setInitPopup] = useState(false)
   const [RenderState, setRenderState] = useState<React.FC>(() => <></>)
@@ -92,7 +112,7 @@ const EditPage:React.FC = () => {
                   // parseしたJSON形式がPage型に一致しているかどうかを調べて、一致していたらdispatchする
                     try {
                       const dispatchProject:Type.Project = JSON.parse(data)
-                      dispatch({ command: 'init', payloadProject: dispatchProject })
+                      pesumiDispatch({ command: 'init', payloadProject: dispatchProject })
                       setInitPopup(true)
                     } catch (err) {
                       // 読み込んだJSONファイルがproject型に対応していないのでエラーが出る
@@ -123,8 +143,10 @@ const EditPage:React.FC = () => {
   }, [initPopup])
   return (
     <Layout title="新規作成">
-      <pesumiGameContext.Provider value = {{ state, dispatch }}>
-        <RenderState />
+      <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
+        <editorFileContext.Provider value = {{ fileState, fileDispatch }}>
+          <RenderState />
+        </editorFileContext.Provider>
       </pesumiGameContext.Provider>
     </Layout>
   )

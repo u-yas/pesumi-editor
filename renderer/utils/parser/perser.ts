@@ -1,5 +1,4 @@
 
-
-export function novelParser() {
+export function novelParser () {
 
 }

@@ -1,7 +1,8 @@
+import { NextPage } from 'next'
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-const AboutPage = ():React.FC => (
+const AboutPage:NextPage = () => (
   <Layout title="PeSuMi Editorについて">
     <h1>PeSuMi とは</h1>
     <p>This is the about page</p>

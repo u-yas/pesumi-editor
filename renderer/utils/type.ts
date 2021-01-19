@@ -26,9 +26,6 @@ export type GameCommand =
   | 'Character'
   | 'Character';
 
-export interface File {
-  text: string
-}
 export interface OptionClass {
   type: string;
   font?: string;
@@ -38,7 +35,7 @@ export interface OptionClass {
 export interface Page {
   command: DataActionType;
   option: OptionClass | string;
-  text?: string;
+  content?: string; // コンテンツのpathや本文
 }
 
 export interface Node {
