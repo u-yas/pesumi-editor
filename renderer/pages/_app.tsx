@@ -61,11 +61,7 @@ const initialState:Type.Project = {
     writer: [],
     illustrator: []
   },
-  node: [{
-    label: '',
-    id: 0,
-    page: []
-  }]
+  node: []
 }
 const initText = ''
 
@@ -83,7 +79,7 @@ const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
     <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
       <editorFileContext.Provider value = {{ fileState, fileDispatch }}>
       <Header />
-        <Component {...pageProps} />
+      <Component {...pageProps} />
       </editorFileContext.Provider>
     </pesumiGameContext.Provider>
     </>

@@ -28,10 +28,10 @@
 
         // No need to import React when using Next.js
         "react/react-in-jsx-scope": "off",
-
+        "no-use-before-define": "off",
         // This rule is not compatible with Next.js"s <Link /> components
         "jsx-a11y/anchor-is-valid": "off",
-	"no-undef":"off",
+	    "no-undef":"off",
         // Why would you want unused vars?
         "@typescript-eslint/no-unused-vars": ["error"],
 
