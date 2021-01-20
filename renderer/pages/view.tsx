@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import NodeList from '../components/view/nodeList'
+import NodeList from '../components/view/nodeView'
 /**
  * node形式でシナリオの構造を可視化する
  */

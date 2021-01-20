@@ -1,7 +1,7 @@
 import { usePesumi } from '../../pages/_app'
 import NodeComponent from './components/nodeComponent'
 
-const NodeList:React.FC = () => {
+const View:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
   const { pesumiState } = usePesumi()
 
@@ -16,4 +16,4 @@ const NodeList:React.FC = () => {
   )
 }
 
-export default NodeList
+export default View

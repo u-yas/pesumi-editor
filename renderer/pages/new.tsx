@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 
 /**
- *  新規にプロジェクトを作成するときの初期ダイアログ
+ *  新規にプロジェクトを作成するときの初期フォームを作成する
  */
 const New:NextPage = () => {
   return (

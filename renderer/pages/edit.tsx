@@ -1,17 +1,20 @@
 import React, { useLayoutEffect } from 'react'
 import { Resizable } from 're-resizable'
-import CommandList from '../components/command/nodeCommand'
-import NodeList from '../components/view/nodeList'
+import Command from '../components/command'
+import View from '../components/view/nodeView'
 import { usePesumi } from './_app'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
 
-type EditorState = {
+export type EditorState = {
   state: 'Node'|'Pages'|'Page';
-  index: number
+  index: {
+    nodeIndex: number
+    pagesIndex: number
+  }
 }
 
-const editorStateContext : React.Context<EditorState> = React.createContext({ state: 'Node', index: 0 } as EditorState)
+export const editorStateContext : React.Context<EditorState> = React.createContext({} as EditorState)
 /**
  * 開いたときに新規作成化既存のファイルかを選択する。
  * 新規の場合->プロジェクト名を入力させる
@@ -27,10 +30,10 @@ const EditPage:NextPage = () => {
     }
   })
   return (
-      <editorStateContext.Provider value={{ state: 'Node', index: 0 }} >
+      <editorStateContext.Provider value={{ state: 'Node', index: { nodeIndex: 0, pagesIndex: 0 } }} >
         <Resizable >
-                <CommandList />
-                <NodeList />
+                <Command />
+                <View />
             </Resizable>
       </editorStateContext.Provider>
   )
