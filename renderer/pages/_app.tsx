@@ -3,7 +3,7 @@ import type { AppProps /*, AppContext */ } from 'next/app'
 import { useReducer, createContext, useContext } from 'react'
 import Header from '../components/header'
 import * as Type from '../utils/type'
-
+import { ChakraProvider } from '@chakra-ui/react'
 /**
  * .pesumiファイル(中身はjson)のコンテキストの初期化
  */
@@ -78,9 +78,11 @@ const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
     <>
     <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
       <editorFileContext.Provider value = {{ fileState, fileDispatch }}>
-      <Header />
-      <Component {...pageProps} />
-      </editorFileContext.Provider>
+        <ChakraProvider>
+          <Header />
+          <Component {...pageProps} />
+        </ChakraProvider>
+        </editorFileContext.Provider>
     </pesumiGameContext.Provider>
     </>
   )
