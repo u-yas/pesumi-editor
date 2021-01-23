@@ -4,6 +4,7 @@ import { useReducer, createContext, useContext } from 'react'
 import Header from '../components/header'
 import * as Type from '../utils/type'
 import { ChakraProvider } from '@chakra-ui/react'
+
 /**
  * .pesumiファイル(中身はjson)のコンテキストの初期化
  */
@@ -31,14 +32,6 @@ export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):T
 }
 
 /**
- * エディターに書かれているファイルを管理するContext
- */
-const editorFileContext = createContext({} as {
-   fileState: string,
-    fileDispatch: React.Dispatch<Type.FileAction>
-  })
-
-/**
  * ファイルを読み込んだり、消したり、ファイル内のデータをパースしたりを管理するためのReducer
  * @param state
  * @param action
@@ -63,7 +56,6 @@ const initialState:Type.Project = {
   },
   node: []
 }
-const initText = ''
 
 // カスタムhooks
 export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.DataAction>; } => useContext(pesumiGameContext)
@@ -71,19 +63,15 @@ export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.D
 const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
   // エクスポートするjsonデータのstate
   const [pesumiState, pesumiDispatch] = useReducer(pesumiGameReducer, initialState)
-  // editorのテキストのstate
-  const [fileState, fileDispatch] = useReducer(EditorCommandReducer, initText)
 
   return (
     <>
-    <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
-      <editorFileContext.Provider value = {{ fileState, fileDispatch }}>
-        <ChakraProvider>
-          <Header />
-          <Component {...pageProps} />
-        </ChakraProvider>
-        </editorFileContext.Provider>
-    </pesumiGameContext.Provider>
+      <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
+          <ChakraProvider>
+            <Header />
+            <Component {...pageProps} />
+          </ChakraProvider>
+      </pesumiGameContext.Provider>
     </>
   )
 }

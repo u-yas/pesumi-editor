@@ -39,6 +39,7 @@ export interface Page {
 }
 
 export interface Node {
+  kind:'node'
   label: string;
   id: number;
   page: Page[];
