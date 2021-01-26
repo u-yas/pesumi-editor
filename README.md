@@ -1,5 +1,5 @@
 ### 流れ
-PeSuMi-editorで作成したゲームをPeSuMi-Hubで公開する、公開、非公開設定、課金設定、アナリティクス設定
+PeSuMi-editorで作成したゲームをPeSuMi-Theaterで公開する、公開、非公開設定、課金設定、アナリティクス設定
 ###  由来
 - PictureのPi
 - MusicのMu
