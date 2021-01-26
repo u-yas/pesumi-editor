@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { editorStateContext, EditorState } from '../pages/edit'
 import NodeView from './view/components/nodeView'
-import PagesView from './view/components/pagesView'
+import PagesView from './view/components/pagesComponent'
 import PageView from './view/components/pageView'
 /**
  * editorのステータスによってNodeView,PagesView,PageViewを表示する

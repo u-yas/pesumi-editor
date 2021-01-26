@@ -1,42 +1,37 @@
-import { DragDropContext } from 'react-beautiful-dnd'
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { usePesumi } from '../../pages/_app'
-import NodeComponent from './components/nodeComponent'
-import { onDragEnd, reorder } from '../../utils/editor/reorder'
+import NodeOrPages from './components/nodeOrPagesComponent'
+import uuid from 'uuid'
+import AddNodeButton from '../view/components/addNodeButton'
+
+/** pesumiData */
 const View:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
-  const { pesumiState, pesumiDispatch } = usePesumi()
+  const { pesumiState } = usePesumi()
+  const drpUuid = uuid.v4()
 
   const reorder = (list:any[], startIndex:number, endIndex:number) => {
-    const result = Array.from(list)
-    const [removed] = result.splice(startIndex, 1)
-    result.splice(endIndex, 0, removed)
-  
-    return result
+
   }
-  
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return
-    }
-  
-    if (result.type === 'NODE') {
-      console.log(reult)
-      const node = reorder(
-        pesumiState.node,
-        result.source.index,
-        result.destination.index
-      )
-      pesumiDispatch({command:'init',payloadNode: })
-    }
-  }
-  
+
+  // Nodeの一覧がラベルと一緒に表示される、クリックするとpagesが展開される
   return (
     <>
-    {pesumiState.node.map((value, index):JSX.Element => {
-      return (
-         <DragDropContext onDragend={()=>onDragEnd()}
-      )
-    })}
+      <Droppable key={drpUuid} droppableId={drpUuid}>
+        {(provided) => {
+          return (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {pesumiState.node.map((value, index) => {
+                  return (
+                    <NodeOrPages key={index} status={false} node={value}/>
+                  )
+                })
+              }
+              </div>
+          )
+        }}
+      </Droppable>
+      <AddNodeButton />
     </>
   )
 }

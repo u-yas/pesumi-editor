@@ -5,6 +5,7 @@ import View from '../components/view/nodeView'
 import { usePesumi } from './_app'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 export type EditorState = {
   state: 'Node'|'Pages'|'Page';
@@ -21,7 +22,7 @@ export const editorStateContext : React.Context<EditorState> = React.createConte
  * 既存のファイルを開く場合は、エクスポートする既存のファイルのフォルダを選択する
  */
 const EditPage:NextPage = () => {
-  const { pesumiState } = usePesumi()
+  const { pesumiState, pesumiDispatch } = usePesumi()
   const router = useRouter()
   useLayoutEffect(() => {
     if (pesumiState.projectId === undefined || null || 0) {
@@ -29,11 +30,40 @@ const EditPage:NextPage = () => {
       router.push('/')
     }
   })
+
+  const onDragEnd = (result:DropResult) => {
+    const { source, destination } = result
+    if (!result.destination) {
+      return
+    }
+
+    switch (source.droppableId) {
+      case destination?.droppableId:
+        pesumiDispatch({
+          
+        })
+    }
+  
+    if (result.type === 'NODE') {
+      console.log(result)
+      const node = reorder(
+        pesumiState.node,
+        result.source.index,
+        result.destination.index
+      )
+      pesumiDispatch({command:'init',payloadNode: })
+    }
+  }
+  
   return (
       <editorStateContext.Provider value={{ state: 'Node', index: { nodeIndex: 0, pagesIndex: 0 } }} >
         <Resizable >
+              <DragDropContext onDragEnd={onDragEnd}>
+                {/* コマンドリスト、サイドバーみたいな感じで表示する */}
                 <Command />
-                <View />
+                {/* コマンドからのドロップ先、ドロップしたらコンテンツに応じてフォームが表示され、そこに入力をする */}
+                  <View />
+              </DragDropContext>
             </Resizable>
       </editorStateContext.Provider>
   )

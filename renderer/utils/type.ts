@@ -33,6 +33,7 @@ export interface OptionClass {
 }
 
 export interface Page {
+  id:string
   command: DataActionType;
   option: OptionClass | string;
   content?: string; // コンテンツのpathや本文
@@ -41,7 +42,7 @@ export interface Page {
 export interface Node {
   kind:'node'
   label: string;
-  id: number;
+  id: string;
   page: Page[];
 }
 
@@ -62,7 +63,7 @@ export interface GameData {
 }
 
 export interface DataAction {
-  command: DataActionType
+  action: DataActionType
   payloadProjectIndex?: number // NodeやProjectの編集先の配列のインデックス
   payloadNodeIndex?: number
   payloadProject?:Project
