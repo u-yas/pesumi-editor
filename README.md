@@ -1,3 +1,4 @@
+![logo](./image/logo.png)
 ### 流れ
 PeSuMi-editorで作成したゲームをPeSuMi-Theaterで公開する、公開、非公開設定、課金設定、アナリティクス設定
 ###  由来
