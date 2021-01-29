@@ -20,6 +20,7 @@ const NodeComponent:React.FC<Props> = (props: Props) => {
         return (
           <div ref={dragProvided.innerRef}>
             {/* ここにノード単体のコンポーネントを表示する */}
+
           </div>
         )
       }}
