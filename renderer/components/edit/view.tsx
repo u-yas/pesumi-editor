@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { editorStateContext, EditorState } from '../pages/edit'
+import { editorStateContext, EditorState } from '../../pages/edit'
 import NodeView from './view/nodeView'
 import PagesView from './view/components/pagesComponent'
 /**
