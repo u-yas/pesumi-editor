@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "my-nextron-app",
+  "name": "pesumi-editor",
   "description": "My application description",
-  "version": "1.0.0",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
+  "version": "0.0.0",
+  "author": "u-yas<pesumi-organization@protonmail.com>",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
