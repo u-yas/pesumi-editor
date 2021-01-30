@@ -1,0 +1,12 @@
+appId: net.pesumi
+productName: PeSuMi Editor
+copyright: Copyright © 2021 u-yas
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null

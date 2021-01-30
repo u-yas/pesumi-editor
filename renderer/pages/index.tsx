@@ -1,5 +1,5 @@
-import { remote } from 'electron'
-import { readFile } from 'fs'
+// import { remote } from 'electron'
+// import { readFile } from 'fs'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
@@ -23,32 +23,32 @@ const IndexPage:NextPage = () => {
         </p>
         <p>
           <button className={styles.edit} onClick={() => {
-            const dialog = remote.dialog
-            dialog.showOpenDialog(remote.getCurrentWindow(), {
-              filters: [
-                { name: 'JSON File', extensions: ['json'] }
-              ],
-              properties: ['openFile']
-            }).then(result => {
-              if (result.filePaths.length !== 0) {
-                // ファイル読み込み
-                readFile(result.filePaths[0], { encoding: 'utf-8' }, (err, data) => {
-                  if (err) {
-                    alert(err)
-                  } else {
-                    // parseしたJSON形式がPage型に一致しているかどうかを調べて、一致していたらdispatchする
-                    try {
-                      const dispatchProject:Type.Project = JSON.parse(data)
-                      pesumiDispatch({ command: 'init', payloadProject: dispatchProject })
-                      router.push('/edit')
-                    } catch (err) {
-                      // 読み込んだJSONファイルがproject型に対応していないのでエラーが出る
-                      alert(err)
-                    }
-                  }
-                })
-              }
-            })
+            // const dialog = remote.dialog
+          //   dialog.showOpenDialog(remote.getCurrentWindow(), {
+          //     filters: [
+          //       { name: 'JSON File', extensions: ['json'] }
+          //     ],
+          //     properties: ['openFile']
+          //   }).then(result => {
+          //     if (result.filePaths.length !== 0) {
+          //       // ファイル読み込み
+          //       // readFile(result.filePaths[0], { encoding: 'utf-8' }, (err, data) => {
+          //       //   if (err) {
+          //       //     alert(err)
+          //       //   } else {
+          //       //     // parseしたJSON形式がPage型に一致しているかどうかを調べて、一致していたらdispatchする
+          //       //     try {
+          //       //       const dispatchProject:Type.Project = JSON.parse(data)
+          //       //       pesumiDispatch({ action: 'init', payloadProject: dispatchProject })
+          //       //       router.push('/edit')
+          //       //     } catch (err) {
+          //       //       // 読み込んだJSONファイルがproject型に対応していないのでエラーが出る
+          //       //       alert(err)
+          //       //     }
+          //       //   }
+          //       // })
+          //     }
+          //   })
           }}
           >
             編集中のファイルを開く
