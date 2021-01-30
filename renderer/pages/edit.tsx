@@ -40,7 +40,7 @@ const EditPage:NextPage = () => {
     switch (source.droppableId) {
       case destination?.droppableId:
         pesumiDispatch({
-          
+          action: 'init'
         })
     }
   
@@ -51,7 +51,7 @@ const EditPage:NextPage = () => {
         result.source.index,
         result.destination.index
       )
-      pesumiDispatch({command:'init',payloadNode: })
+      pesumiDispatch({action:'init',payloadNode: })
     }
   }
   

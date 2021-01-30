@@ -17,7 +17,7 @@ const pesumiGameContext = createContext({} as {
  *  JSON形式の配列の処理を管理するReducer
  * */
 export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):Type.Project => {
-  switch (action.command) {
+  switch (action.action) {
     // payloadで指定したデータで初期化する
     case 'init':
       if (action.payloadProject !== undefined) { state = action.payloadProject }
