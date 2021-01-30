@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { editorStateContext, EditorState } from '../pages/edit'
-import NodeView from './view/components/nodeView'
+import NodeView from './view/nodeView'
 import PagesView from './view/components/pagesComponent'
-import PageView from './view/components/pageView'
 /**
  * editorのステータスによってNodeView,PagesView,PageViewを表示する
  */
@@ -12,9 +11,7 @@ const View:React.FC = () => {
     case 'Node':
       return <NodeView />
     case 'Pages':
-      return <PagesView nodeIndex={editorStatus.index.nodeIndex} />
-    case 'Page':
-      return <PageView nodeIndex={editorStatus.index.nodeIndex} pagesIndex={editorStatus.index.pagesIndex}/>
+      return <PagesView page={editorStatus.index.nodeIndex} />
     default:
       return <div>editorStatus.stateがエラーです{editorStatus.state}</div>
   }

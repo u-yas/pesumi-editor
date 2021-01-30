@@ -43,18 +43,18 @@ const EditPage:NextPage = () => {
           action: 'init'
         })
     }
-  
+
     if (result.type === 'NODE') {
       console.log(result)
-      const node = reorder(
-        pesumiState.node,
-        result.source.index,
-        result.destination.index
-      )
-      pesumiDispatch({action:'init',payloadNode: })
+      // const node = reorder(
+      //   pesumiState.node,
+      //   result.source.index,
+      //   result.destination.index
+      // )
+      // pesumiDispatch({action:'init',payloadNode: })
     }
   }
-  
+
   return (
       <editorStateContext.Provider value={{ state: 'Node', index: { nodeIndex: 0, pagesIndex: 0 } }} >
         <Resizable >

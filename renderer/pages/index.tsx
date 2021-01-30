@@ -1,5 +1,4 @@
-// import { remote } from 'electron'
-// import { readFile } from 'fs'
+import { ipcRenderer } from 'electron'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
@@ -23,6 +22,13 @@ const IndexPage:NextPage = () => {
         </p>
         <p>
           <button className={styles.edit} onClick={() => {
+            ipcRenderer.on('openProjectFolder', (_event:Event, value:Type.Project) => {
+              try {
+                pesumiDispatch({ action: 'init', payloadProject: value })
+              } catch (err) {
+                console.log(`フォルダが正常に読み取れませんでした。\nエラーコード:${err}`)
+              }
+            })
             // const dialog = remote.dialog
           //   dialog.showOpenDialog(remote.getCurrentWindow(), {
           //     filters: [

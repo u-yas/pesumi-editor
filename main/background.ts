@@ -1,4 +1,4 @@
-import { app, ipcMain, IpcMainEvent, Menu } from 'electron'
+import { app, dialog, ipcMain, IpcMainEvent, Menu } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
 
@@ -10,13 +10,13 @@ if (isProd) {
   app.setPath('userData', `${app.getPath('userData')} (development)`)
 }
 
+const mainWindow = createWindow('main', {
+  width: 1000,
+  height: 600
+});
+
 (async () => {
   await app.whenReady()
-
-  const mainWindow = createWindow('main', {
-    width: 1000,
-    height: 600
-  })
 
   if (isProd) {
     await mainWindow.loadURL('app://./home.html')
@@ -35,9 +35,9 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
   {
     label: 'ファイル',
     submenu: [
-      { label: '新規作成', click () {} },
-      { label: 'ファイルを保存する', click () {} },
-      { label: '名前をつけて保存する', click () {} },
+      // { label: '新規作成', click () {} },
+      // { label: 'ファイルを保存する', click () {} },
+      // { label: '名前をつけて保存する', click () {} },
       { label: '終了', click () { app.quit() } }
     ]
   },
@@ -73,6 +73,19 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 )
 
 // チャネル messageをリッスンし、受信したメッセージをレンダラープロセスに再送信します
-ipcMain.on('message', (event: IpcMainEvent, message: any) => {
+ipcMain.on('message', (event: IpcMainEvent, message: unknown) => {
   event.sender.send('message', message)
+})
+
+// チャネルopenProjectFolderは/renderer/pages/index.tsxにあり、プロジェクトフォルダを開く
+ipcMain.handle('openProjectFolder', async () => {
+  const folderPath = await dialog.showOpenDialog(mainWindow, {
+    buttonLabel: '開く',
+    properties: [
+      'openDirectory'
+    ]
+  }).catch(Error => {
+    console.log(`プロジェクトフォルダーを開くことに失敗した\nエラーコード：${Error}`)
+  })
+  return folderPath
 })

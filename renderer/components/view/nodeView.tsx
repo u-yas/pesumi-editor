@@ -1,18 +1,14 @@
-import { Draggable, Droppable } from 'react-beautiful-dnd'
+import { Droppable } from 'react-beautiful-dnd'
 import { usePesumi } from '../../pages/_app'
 import NodeOrPages from './components/nodeOrPagesComponent'
 import uuid from 'uuid'
 import AddNodeButton from '../view/components/addNodeButton'
 
 /** pesumiData */
-const View:React.FC = () => {
+const NodeView:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
   const { pesumiState } = usePesumi()
   const drpUuid = uuid.v4()
-
-  const reorder = (list:any[], startIndex:number, endIndex:number) => {
-
-  }
 
   // Nodeの一覧がラベルと一緒に表示される、クリックするとpagesが展開される
   return (
@@ -36,4 +32,4 @@ const View:React.FC = () => {
   )
 }
 
-export default View
+export default NodeView

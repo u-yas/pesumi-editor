@@ -3,7 +3,7 @@ import {
   BrowserWindow,
   BrowserWindowConstructorOptions
 } from 'electron'
-import * as Store from 'electron-store'
+import Store from 'electron-store'
 
 export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
   const key = 'window-state'
@@ -28,7 +28,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     }
   }
 
-  const windowWithinBounds = (windowState, bounds) => {
+  const windowWithinBounds = (windowState: { x: number; y: number; width; height }, bounds: Electron.Rectangle):boolean => {
     return (
       windowState.x >= bounds.x &&
       windowState.y >= bounds.y &&
@@ -45,7 +45,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     })
   }
 
-  const ensureVisibleOnSomeDisplay = windowState => {
+  const ensureVisibleOnSomeDisplay = (windowState) => {
     const visible = screen.getAllDisplays().some(display => {
       return windowWithinBounds(windowState, display.bounds)
     })

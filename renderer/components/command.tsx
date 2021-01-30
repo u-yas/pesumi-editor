@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { editorStateContext, EditorState } from '../pages/edit'
 import NodeCommand from './command/nodeCommand'
-import PageCommand from './command/pageCommand'
 import PagesCommand from './command/pagesCommand'
 
 /**
@@ -16,9 +15,6 @@ const Command:React.FC = () => {
     case 'Pages':
       // この段階で、コマンドからドロップをすることでpageステータスに代わり、入力画面になる
       return <PagesCommand nodeIndex={editorStatus.index.nodeIndex} />
-    case 'Page':
-      // pageステータスになったら表示されているコマンドの種類に応じてコンポーネントを展開する
-      return <PageCommand nodeIndex={editorStatus.index.nodeIndex} pagesIndex={editorStatus.index.pagesIndex}/>
     default:
       return <div>editorStatus.stateがエラーです{editorStatus.state}</div>
   }
