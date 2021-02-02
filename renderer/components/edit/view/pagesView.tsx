@@ -1,8 +1,8 @@
 import { useRouter } from 'next/dist/client/router'
 import React, { useContext, useEffect, useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { editorStateContext } from '../../pages/edit'
-import * as Type from '../../utils/type'
+import { editorStateContext } from '../../../pages/edit'
+import * as Type from '../../../utils/type'
 import PagesComponent from './components/pagesComponent'
 
 type Props = {

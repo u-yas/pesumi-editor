@@ -1,5 +1,5 @@
-import { usePesumi } from '../../../pages/_app'
-import * as Type from '../../../utils/type'
+import { usePesumi } from '../../../../pages/_app'
+import * as Type from '../../../../utils/type'
 /**
  *ボタンを押すと空のノードを作成する
  * @param props

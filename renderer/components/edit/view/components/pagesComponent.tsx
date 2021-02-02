@@ -1,4 +1,4 @@
-import * as Type from '../../../utils/type'
+import * as Type from '../../../../utils/type'
 
 type Props = {
   page: Type.Page

@@ -1,7 +1,7 @@
 import { app, dialog, ipcMain, IpcMainEvent, Menu } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
-
+import { readFile } from 'fs'
 const isProd: boolean = process.env.NODE_ENV === 'production'
 
 if (isProd) {
@@ -87,5 +87,6 @@ ipcMain.handle('openProjectFolder', async () => {
   }).catch(Error => {
     console.log(`プロジェクトフォルダーを開くことに失敗した\nエラーコード：${Error}`)
   })
+  const projectJson = fs.readFile()
   return folderPath
 })

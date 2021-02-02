@@ -22,9 +22,10 @@ const IndexPage:NextPage = () => {
         </p>
         <p>
           <button className={styles.edit} onClick={() => {
-            ipcRenderer.on('openProjectFolder', (_event:Event, value:Type.Project) => {
+            // プロジェクトフォルダーのパスを取得する
+            ipcRenderer.on('openProjectFolder', (_event:Event, value:{folderPath:string, projectJsonFile:Type.Project}) => {
               try {
-                pesumiDispatch({ action: 'init', payloadProject: value })
+                pesumiDispatch({ action: 'init', payloadProject: value.projectJsonFile })
               } catch (err) {
                 console.log(`フォルダが正常に読み取れませんでした。\nエラーコード:${err}`)
               }

@@ -1,7 +1,7 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
 import { useReducer, createContext, useContext } from 'react'
-import Header from '../components/header'
+import Header from '../components/layout/header'
 import * as Type from '../utils/type'
 import { ChakraProvider } from '@chakra-ui/react'
 

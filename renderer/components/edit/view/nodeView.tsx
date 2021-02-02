@@ -1,8 +1,8 @@
 import { Droppable } from 'react-beautiful-dnd'
-import { usePesumi } from '../../pages/_app'
+import { usePesumi } from '../../../pages/_app'
 import NodeOrPages from './components/nodeOrPagesComponent'
 import uuid from 'uuid'
-import AddNodeButton from '../view/components/addNodeButton'
+import AddNodeButton from './components/addNodeButton'
 
 /** pesumiData */
 const NodeView:React.FC = () => {

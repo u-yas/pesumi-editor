@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { editorStateContext } from '../../pages/edit'
+import { editorStateContext } from '../../../pages/edit'
 import { Grid, Box } from '@chakra-ui/react'
 
 type Props = {

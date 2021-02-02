@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import type{ Node } from '../../../utils/type'
-import PagesComponent from '../../view/components/pagesComponent'
-import NodeComponent from '../../view/components/nodeComponent'
+import type{ Node } from '../../../../utils/type'
+import PagesComponent from './pagesComponent'
+import NodeComponent from './nodeComponent'
 import { CloseButton } from '@chakra-ui/react'
 
 type Props = {
