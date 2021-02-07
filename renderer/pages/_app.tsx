@@ -12,7 +12,7 @@ const pesumiGameContext = createContext({} as {
   pesumiState: Type.Project,
   pesumiDispatch: React.Dispatch<Type.DataAction>
 })
-
+export const folderContext = createContext('' as string)
 /**
  *  JSON形式の配列の処理を管理するReducer
  * */
@@ -67,10 +67,12 @@ const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <pesumiGameContext.Provider value = {{ pesumiState, pesumiDispatch }}>
+        <folderContext.Provider value = ''>
           <ChakraProvider>
             <Header />
             <Component {...pageProps} />
           </ChakraProvider>
+        </folderContext.Provider>
       </pesumiGameContext.Provider>
     </>
   )

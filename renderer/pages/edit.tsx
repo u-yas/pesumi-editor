@@ -26,7 +26,7 @@ const EditPage:NextPage = () => {
   const router = useRouter()
   useLayoutEffect(() => {
     if (pesumiState.projectId === undefined || null || 0) {
-      alert('ファイルが開かれていません。ホーム画面に戻り、新規作成か既存のファイルを開くかを選択してください')
+      alert('ファイルが開かれていません。ホーム画面から、新規作成か、既存のファイルを開くかを選択してください')
       router.push('/')
     }
   })
