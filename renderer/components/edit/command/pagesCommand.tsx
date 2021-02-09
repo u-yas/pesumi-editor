@@ -14,6 +14,8 @@ const PagesCommand:React.FC<Props> = (props:Props) => {
 
   return (
     <>
+      {props.nodeIndex}
+      {editorStatus}
       <Grid
         templateColumns="repeat(1, 1fr)"
         backgroundColor="#eefbff"
@@ -45,7 +47,6 @@ const PagesCommand:React.FC<Props> = (props:Props) => {
           }}
           fontSize="3xl"
           fontWeight="bold"
-          onClick={() => {}}
         >
           Text
         </Box>
