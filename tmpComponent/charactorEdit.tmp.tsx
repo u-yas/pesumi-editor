@@ -5,12 +5,8 @@ import {
   Editable,
   EditableInput,
   EditablePreview,
-  InputGroup,
-  InputLeftAddon,
-  Input,
   Box,
   IconButton,
-  List,
   Flex,
   Text,
   Tooltip,
@@ -23,6 +19,7 @@ import {
 import { DownloadIcon } from '@chakra-ui/icons'
 import { SmallAddIcon } from "@chakra-ui/icons";
 
+// これはcommandのキャラクターエディット画面の画面コンポーネント
 const App = () => {
   return (
     <ChakraProvider resetCSS>

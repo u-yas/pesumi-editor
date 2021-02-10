@@ -1,22 +1,25 @@
-import { useRouter } from 'next/dist/client/router'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { editorStateContext } from '../../../pages/edit'
-import * as Type from '../../../utils/type'
-import PagesComponent from './components/pagesComponent'
+import {Page}from '../../../interfaces/type'
+import CommandComponent from './components/commandComponent'
 
 type Props = {
-  pages: Type.Page[]
+  pages: Page[]
 }
 
 const PagesView:React.FC<Props> = (props:Props) => {
-  const [editorStatus, setEditorState] = useState(useContext(editorStateContext).state)
+  const [, setEditorState] = useState(useContext(editorStateContext).state)
   const { pages } = props
 
   return (
     <>
-      <div onClick={() => setEditorState('Node')} role='button' tabIndex={0} onKeyDown={() => { setEditorState('Node') }}>
-      {/* このボタンを押すと */}
+      <div 
+        onClick={() => setEditorState('Node')} 
+        role='button' tabIndex={0} 
+        onKeyDown={() => { setEditorState('Node') }}
+      >
+        {/* このボタンを押すと */}
       </div>
       {pages.map((value, index) => {
         return (
@@ -26,7 +29,7 @@ const PagesView:React.FC<Props> = (props:Props) => {
                 <div ref={dragProvided.innerRef}>
                   {/* ここにpagesのコンポーネントを表示する
                   Commandリストからコマンドがドロップされたらフォームを展開する */}
-                  <PagesComponent page={value}/>
+                  <CommandComponent command={value}/>
                 </div>
               )
             }}

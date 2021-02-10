@@ -1,5 +1,5 @@
 
-import type { Node } from '../../../../utils/type'
+import type { Node } from '../../../../interfaces/type'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box, CloseButton, Flex, Grid, Tag, Textarea } from '@chakra-ui/react'
 import React from 'react'
