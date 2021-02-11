@@ -2,7 +2,8 @@ import { app, dialog, ipcMain, IpcMainEvent, Menu } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
 import { readFile } from 'fs'
-import openProjectFolder from './helpers/ipc/folderReading'
+import openProjectFolder from './helpers/ipc/openProjectFolder'
+import openStandingCharacterImage from './helpers/ipc/openStandingCharacterImage'
 const isProd: boolean = process.env.NODE_ENV === 'production'
 
 if (isProd) {
@@ -83,3 +84,9 @@ ipcMain.handle('openProjectFolder', async () => {
   // const projectJson = readFile()
   return await openProjectFolder(mainWindow)
 })
+
+ipcMain.on('importCharacterImage', async (_event:IpcMainEvent, message:string[]) => {
+  return await openStandingCharacterImage(message[0],message[1],mainWindow)
+})
+
+ipcMain.on('')
