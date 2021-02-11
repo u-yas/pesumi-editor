@@ -1,3 +1,5 @@
+import { background } from '@chakra-ui/react'
+
 /**
  * 編集するデータのActionコマンド
  */
@@ -74,3 +76,20 @@ export interface DataAction {
 export interface FileAction {
   command: EditorCommand
 }
+
+// キャラクターの立ち絵の画像、イベントCG、BGM、SEなどを追加で管理する。以下のinterfaceは上のPageと入れ替える
+// export interface Media {
+//       character: Character;
+//       bgImage: BackgroundImage;
+//       eventCG: EventCG;
+//       music: Music;
+//       se: SE;
+// }
+
+// export interface Project {
+//   projectName: string;
+//   projectId: string;
+//   author: Author;
+//   media: Media:
+//   node: Node[];
+// }

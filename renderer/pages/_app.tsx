@@ -26,6 +26,13 @@ export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):T
     case 'addPage' :
       if (action.payloadNodeIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) { state.node[action.payloadNodeIndex].page.splice(action.payloadProjectIndex, 0, action.payloadPage) }
       return state
+    case 'deleteNode':
+      if(action.payloadNodeIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) {
+        state.node.splice(action.payloadNodeIndex)
+        return state
+      } else {
+        throw console.error('reducerのdeleteNodeが正常に処理できなかった');
+      }
     default :
       return state
   }

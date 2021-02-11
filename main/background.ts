@@ -2,6 +2,7 @@ import { app, dialog, ipcMain, IpcMainEvent, Menu } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
 import { readFile } from 'fs'
+import openProjectFolder from './helpers/ipc/folderReading'
 const isProd: boolean = process.env.NODE_ENV === 'production'
 
 if (isProd) {
@@ -79,14 +80,6 @@ ipcMain.on('message', (event: IpcMainEvent, message: unknown) => {
 
 // チャネルopenProjectFolderは/renderer/pages/index.tsxにあり、プロジェクトフォルダを開く
 ipcMain.handle('openProjectFolder', async () => {
-  const folderPath = await dialog.showOpenDialog(mainWindow, {
-    buttonLabel: '開く',
-    properties: [
-      'openDirectory'
-    ]
-  }).catch(Error => {
-    console.log(`プロジェクトフォルダーを開くことに失敗した\nエラーコード：${Error}`)
-  })
-  const projectJson = fs.readFile()
-  return folderPath
+  // const projectJson = readFile()
+  return await openProjectFolder(mainWindow)
 })

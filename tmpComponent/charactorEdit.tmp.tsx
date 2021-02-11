@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   ChakraProvider,
   Button,
@@ -14,13 +14,12 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon,
-} from "@chakra-ui/react";
-import { DownloadIcon } from '@chakra-ui/icons'
-import { SmallAddIcon } from "@chakra-ui/icons";
+  AccordionIcon
+} from '@chakra-ui/react'
+import { DownloadIcon, SmallAddIcon } from '@chakra-ui/icons'
 
 // これはcommandのキャラクターエディット画面の画面コンポーネント
-const App = () => {
+const CharacterEdit = () => {
   return (
     <ChakraProvider resetCSS>
       <Button
@@ -41,7 +40,7 @@ const App = () => {
       >
         立ち絵一覧
       </Text>
-      {/* start 二重配列[キャラクターの種類の配列]*/}
+      {/* start 二重配列[キャラクターの種類の配列] */}
       <Accordion allowMultiple reduceMotion>
         {/* End キャラクターの立ち絵の配列 */}
         <AccordionItem>
@@ -56,7 +55,7 @@ const App = () => {
                 <EditablePreview />
               </Editable>
             </Tooltip>
-            <AccordionIcon ml={"1rem"} />
+            <AccordionIcon ml={'1rem'} />
           </AccordionButton>
           <AccordionPanel>
             <Flex>
@@ -76,12 +75,12 @@ const App = () => {
               </Text> */}
             <Box
               // ml={["10rem", "12rem", "15rem", "18rem"]}
-              pl={["15px", "15px", "15px", "15px"]}
-              pr={["15px", "15px", "15px", "15px"]}
+              pl={['15px', '15px', '15px', '15px']}
+              pr={['15px', '15px', '15px', '15px']}
               ml="auto"
               outline="dotted"
               color="blackAlpha.200"
-              minWidth={["13rem", "15rem", "18rem", "20rem"]}
+              minWidth={['13rem', '15rem', '18rem', '20rem']}
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -91,7 +90,7 @@ const App = () => {
                 color="blackAlpha.400"
                 textAlign="center"
               />
-                
+
             </Box>
             </Flex>
           </AccordionPanel>
@@ -106,7 +105,7 @@ const App = () => {
         </Tooltip>
       </Flex>
     </ChakraProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default CharacterEdit

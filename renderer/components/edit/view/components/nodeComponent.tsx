@@ -3,6 +3,7 @@ import type { Node } from '../../../../interfaces/type'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box, CloseButton, Flex, Grid, Tag, Textarea } from '@chakra-ui/react'
 import React from 'react'
+import { usePesumi } from '../../../../pages/_app'
 
 type Props = {
   node: Node
@@ -15,6 +16,7 @@ type Props = {
  */
 const NodeComponent:React.FC<Props> = (props: Props) => {
   const { node, key } = props
+  const { pesumiDispatch } = usePesumi()
   return (
     <Draggable key={node.id} draggableId={node.id} index={key}>
       {(dragProvided) => {
@@ -83,7 +85,8 @@ const NodeComponent:React.FC<Props> = (props: Props) => {
                 </Tag>
                 <Tag backgroundColor="whiteAlpha.50">50</Tag>
               </Box>
-              <CloseButton size="md" />
+              {/* nodeの配列の添字をもとにreducer側でnodeを削除する */}
+              <CloseButton size="md" onClick={() => { pesumiDispatch({ action: 'deleteNode', payloadNodeIndex: key }) }}/>
             </Grid>
           </Box>
         </Flex>

@@ -4,7 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 import styles from './styles/index.module.scss'
 import { usePesumi, folderContext } from './_app'
-import * as Type from '../utils/type'
+import * as Type from '../interfaces/type'
 import { useContext, useState } from 'react'
 // 「新しいビジュアルノベルゲームを作成する」、
 // 「作成したゲームを閲覧する」、
