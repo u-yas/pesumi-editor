@@ -1,7 +1,6 @@
-import { app, dialog, ipcMain, IpcMainEvent, Menu } from 'electron'
+import { app, ipcMain, IpcMainEvent, Menu } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
-import { readFile } from 'fs'
 import openProjectFolder from './helpers/ipc/openProjectFolder'
 import openStandingCharacterImage from './helpers/ipc/openStandingCharacterImage'
 import changeCharacterFolderName from './helpers/ipc/changeFolderName'
@@ -88,10 +87,10 @@ ipcMain.handle('openProjectFolder', async () => {
 
 // message[0]とかは後できちんとした型を用意する
 ipcMain.on('importFile', async (_event:IpcMainEvent, message:string[]) => {
-  return await openStandingCharacterImage(message[0],message[1],mainWindow)
+  return await openStandingCharacterImage(message[0], message[1], mainWindow)
 })
 
 // キャラクター名などが変更されたとき、フォルダ名を変更する
 ipcMain.on('changeCharacterName', async (_event, message:string[]) => {
-  return await changeCharacterFolderName(message[0],message[1])
+  return await changeCharacterFolderName(message[0], message[1])
 })
