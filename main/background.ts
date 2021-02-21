@@ -4,6 +4,7 @@ import { createWindow } from './helpers'
 import openProjectFolder from './helpers/ipc/openProjectFolder'
 import openStandingCharacterImage from './helpers/ipc/openStandingCharacterImage'
 import changeCharacterFolderName from './helpers/ipc/changeFolderName'
+
 const isProd: boolean = process.env.NODE_ENV === 'production'
 
 if (isProd) {
@@ -86,11 +87,13 @@ ipcMain.handle('openProjectFolder', async () => {
 })
 
 // message[0]とかは後できちんとした型を用意する
-ipcMain.on('importFile', async (_event:IpcMainEvent, message:string[]) => {
-  return await openStandingCharacterImage(message[0], message[1], mainWindow)
+ipcMain.on('importFile', async (_event:IpcMainEvent, characterName:string) => {
+  // value<-ipcRenderから送られてくるデータ
+  return await openStandingCharacterImage(characterName, mainWindow)
 })
 
 // キャラクター名などが変更されたとき、フォルダ名を変更する
-ipcMain.on('changeCharacterName', async (_event, message:string[]) => {
-  return await changeCharacterFolderName(message[0], message[1])
+ipcMain.on('changeCharacterName', async (_event, { oldName, newName }) => {
+  // value<-ipcRenderから送られてくるデータ
+  return await changeCharacterFolderName(oldName, newName)
 })

@@ -43,5 +43,5 @@
 		    "version":"detect"
 	    }
     },
-    "ignorePatterns": ["node_modules/*","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
+    "ignorePatterns": ["node_modules/*","jest.config.js","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
 }

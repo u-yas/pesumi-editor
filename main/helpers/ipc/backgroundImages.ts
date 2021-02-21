@@ -1,12 +1,8 @@
 import { dialog } from 'electron'
 import fs from 'fs'
-/**
- * キャラクターの立ち絵の画像ファイルやBGMの音声ファイル等をプロジェクトフォルダにインポートする処理
- *  @param Character どのキャラクターの画像なのかを選択する
- *  @param mainWindow メインウインドウ
- *
- */
-const openStandingCharacterImage = (characterName:string, mainWindow:Electron.BrowserWindow):Promise<string> => {
+
+// 変更する
+export const changeBackgroundImages = (oldImageFile, newImageFile, mainWindow) => {
   return new Promise((resolve, reject) => {
     // ダイアログを選択してファイルのパスを取得、そのパスからプロジェクトフォルダにあるキャラクター名のフォルダにコピーする
     dialog.showOpenDialog(mainWindow, {
@@ -19,7 +15,7 @@ const openStandingCharacterImage = (characterName:string, mainWindow:Electron.Br
       ]
     }).then(returnValue => {
       // ファイルパスを所得したのでそのパスのファイルをプロジェクトフォルダの所定の位置にコピーする
-      fs.copyFile(returnValue.filePaths[0], `./${characterName}/image/`, (err) => {
+      fs.copyFile(returnValue.filePaths[0], `./background/${returnValue.filePaths[0].replace(/^.*[\\/]/, '')}`, (err) => {
         if (err) reject(err)
         // エラーが無かったので、resolveして終了する
         else resolve(returnValue.filePaths[0])
@@ -29,5 +25,3 @@ const openStandingCharacterImage = (characterName:string, mainWindow:Electron.Br
     })
   })
 }
-
-export default openStandingCharacterImage
