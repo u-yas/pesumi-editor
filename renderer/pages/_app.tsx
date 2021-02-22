@@ -1,56 +1,11 @@
 // import App from "next/app";
+import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps /*, AppContext */ } from 'next/app'
-import { useReducer, createContext, useContext } from 'react'
+import { useReducer } from 'react'
 import Header from '../components/layout/header'
 import * as Type from '../interfaces/type'
-import { ChakraProvider } from '@chakra-ui/react'
+import { folderContext, pesumiGameContext, pesumiGameReducer } from '../utils/customHooks/usePesumi'
 
-/**
- * .pesumiファイル(中身はjson)のコンテキストの初期化
- */
-const pesumiGameContext = createContext({} as {
-  pesumiState: Type.Project,
-  pesumiDispatch: React.Dispatch<Type.DataAction>
-})
-export const folderContext = createContext('' as string)
-/**
- *  JSON形式の配列の処理を管理するReducer
- * */
-export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):Type.Project => {
-  switch (action.action) {
-    // payloadで指定したデータで初期化する
-    case 'init':
-      if (action.payloadProject !== undefined) { state = action.payloadProject }
-      // page単位を編集し終わったらnodeの中に追加する
-      return state
-    case 'addPage' :
-      if (action.payloadNodeIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) { state.node[action.payloadNodeIndex].page.splice(action.payloadProjectIndex, 0, action.payloadPage) }
-      return state
-    case 'deleteNode':
-      if(action.payloadNodeIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) {
-        state.node.splice(action.payloadNodeIndex)
-        return state
-      } else {
-        throw console.error('reducerのdeleteNodeが正常に処理できなかった');
-      }
-    default :
-      return state
-  }
-}
-
-/**
- * ファイルを読み込んだり、消したり、ファイル内のデータをパースしたりを管理するためのReducer
- * @param state
- * @param action
- */
-export const EditorCommandReducer = (state: string, action: Type.FileAction):string => {
-  switch (action.command) {
-    case 'text':
-      return state
-    default:
-      return state
-  }
-}
 /**
  * reducerの初期データ
  */
@@ -61,12 +16,8 @@ const initialState:Type.Project = {
     writer: [],
     illustrator: []
   },
-  node: []
+  chapter: []
 }
-
-// カスタムhooks
-export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.DataAction>; } => useContext(pesumiGameContext)
-
 const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
   // エクスポートするjsonデータのstate
   const [pesumiState, pesumiDispatch] = useReducer(pesumiGameReducer, initialState)

@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import type{ Node } from '../../../../interfaces/type'
+import type{ Chapter } from '../../../../interfaces/type'
 import PageComponent from './commandComponent'
-import NodeComponent from './nodeComponent'
+import ChapterComponent from './chapterComponent'
 import { CloseButton } from '@chakra-ui/react'
 
 type Props = {
   key: number
   status: boolean
-  node: Node
+  chapter: Chapter
 }
-const NodeOrPages:React.FC<Props> = (props:Props) => {
-  const { key, status, node } = props
+const ChapterOrPages:React.FC<Props> = (props:Props) => {
+  const { key, status, chapter } = props
   const [isOpened, setIsOpened] = useState(status)
 
   return (
@@ -18,7 +18,7 @@ const NodeOrPages:React.FC<Props> = (props:Props) => {
     {/* trueになればpagesコンポーネントを展開するfalseならばNodeコンポーネントを展開する */}
       {isOpened
         ? <>
-            <PageComponent command={node.page[key]} />
+            <PageComponent command={chapter.page[key]} />
             <div
               onClick={() => setIsOpened(false)}
               onKeyDown={() => setIsOpened(false)}
@@ -28,7 +28,7 @@ const NodeOrPages:React.FC<Props> = (props:Props) => {
                 <CloseButton />
             </div>
           </>
-        : <NodeComponent key={key} node={node} />
+        : <ChapterComponent key={key} chapter={chapter} />
 
       }
 
@@ -36,4 +36,4 @@ const NodeOrPages:React.FC<Props> = (props:Props) => {
   )
 }
 
-export default NodeOrPages
+export default ChapterOrPages

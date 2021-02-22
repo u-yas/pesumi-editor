@@ -1,25 +1,25 @@
 import { Droppable } from 'react-beautiful-dnd'
-import { usePesumi } from '../../../pages/_app'
-import NodeOrPages from './components/nodeOrPagesComponent'
+import ChapterOrPages from './components/chapterOrPagesComponent'
 import uuid from 'uuid'
-import AddNodeButton from './components/addNodeButton'
+import AddChapterButton from './components/addChapterButton'
+import { usePesumi } from '../../../utils/customHooks/usePesumi'
 
 /** pesumiData */
-const NodeView:React.FC = () => {
+const ChapterView:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
   const { pesumiState } = usePesumi()
   const drpUuid = uuid.v4()
 
-  // Nodeの一覧がラベルと一緒に表示される、クリックするとpagesが展開される
+  // Chapterの一覧がラベルと一緒に表示される、クリックするとpagesが展開される
   return (
     <>
       <Droppable key={drpUuid} droppableId={drpUuid}>
         {(provided) => {
           return (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                {pesumiState.node.map((value, index) => {
+                {pesumiState.chapter.map((value, index) => {
                   return (
-                    <NodeOrPages key={index} status={false} node={value}/>
+                    <ChapterOrPages key={index} status={false} chapter={value}/>
                   )
                 })
               }
@@ -27,9 +27,9 @@ const NodeView:React.FC = () => {
           )
         }}
       </Droppable>
-      <AddNodeButton />
+      <AddChapterButton />
     </>
   )
 }
 
-export default NodeView
+export default ChapterView

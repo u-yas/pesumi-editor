@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { editorStateContext } from '../../../pages/edit'
 import { Page } from '../../../interfaces/type'
+import { editorStateContext } from '../../../pages/edit'
 import CommandComponent from './components/commandComponent'
 
 type Props = {
@@ -15,9 +15,9 @@ const PagesView:React.FC<Props> = (props:Props) => {
   return (
     <>
       <div
-        onClick={() => setEditorState('Node')}
+        onClick={() => setEditorState('Chapter')}
         role='button' tabIndex={0}
-        onKeyDown={() => { setEditorState('Node') }}
+        onKeyDown={() => { setEditorState('Chapter') }}
       >
         {/* このボタンを押すと */}
       </div>

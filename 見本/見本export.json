@@ -5,7 +5,42 @@
                 "writer": ["u-yas"],
                 "illustrator": ["pompompurin"]
         },
-        "node": [
+        "media": {
+                "character": [
+                        {
+                                "name": "u-yas",
+                                "standingImage": [
+                                        {
+                                                "label": "通常",
+                                                "fileName": "uyas-normal.png",
+                                        },
+                                        {
+                                                "label": "怒った顔",
+                                                "fileName": "uyas-anger.png"
+                                        }
+                                ],
+                                "voice": [
+                                ]
+                        }
+                ],
+                "backgroundImage": [
+                        {
+                                "label": "学校の校門",
+                                "fileName": "FrontSchool.png"
+                        },
+                        {
+                                "label": "教室",
+                                "fileName": "class.png"
+                        }
+                ],
+                "bgm": [
+                        {
+                                "label": "登校中",
+                                "fileName": "gotoSchool.mp3"
+                        }
+                ]
+        },
+        "chapter": [
                 {
                         "label":"冒頭",
                         "id":4353534,

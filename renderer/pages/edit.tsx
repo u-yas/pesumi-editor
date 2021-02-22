@@ -1,16 +1,16 @@
 import React, { useLayoutEffect } from 'react'
 import { Resizable } from 're-resizable'
-import Command from '../components/edit/command'
-import View from '../components/edit/view/nodeView'
-import { usePesumi } from './_app'
+import Settings from '../components/edit/setting'
+import View from '../components/edit/view/chapterView'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { usePesumi } from '../utils/customHooks/usePesumi'
 
 export type EditorState = {
-  state: 'Node'|'Pages'|'Page';
+  state: 'Chapter'|'Pages'|'Page';
   index: {
-    nodeIndex: number
+    chapterIndex: number
     pagesIndex: number
   }
 }
@@ -46,8 +46,8 @@ const EditPage:NextPage = () => {
 
     if (result.type === 'NODE') {
       console.log(result)
-      // const node = reorder(
-      //   pesumiState.node,
+      // const chapter = reorder(
+      //   pesumiState.chapter,
       //   result.source.index,
       //   result.destination.index
       // )
@@ -56,11 +56,11 @@ const EditPage:NextPage = () => {
   }
 
   return (
-      <editorStateContext.Provider value={{ state: 'Node', index: { nodeIndex: 0, pagesIndex: 0 } }} >
+      <editorStateContext.Provider value={{ state: 'Chapter', index: { chapterIndex: 0, pagesIndex: 0 } }} >
         <Resizable >
               <DragDropContext onDragEnd={onDragEnd}>
                 {/* コマンドリスト、サイドバーみたいな感じで表示する */}
-                <Command />
+                <Settings />
                 {/* コマンドからのドロップ先、ドロップしたらコンテンツに応じてフォームが表示され、そこに入力をする */}
                   <View />
               </DragDropContext>

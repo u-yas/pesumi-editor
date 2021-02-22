@@ -1,4 +1,3 @@
-import { background } from '@chakra-ui/react'
 
 /**
  * 編集するデータのActionコマンド
@@ -7,8 +6,8 @@ export type DataActionType =
   | 'init'
   | 'addPage' // 指定したインデックスにページを追加する
   | 'deletePage' // 指定したインデックスのページを削除する
-  | 'addNode' // ノードを指定したインデックスに付与する
-  | 'deleteNode' // ノードを削除する。削除した後の前後のnodeをつなげる
+  | 'addChapter' // ノードを指定したインデックスに付与する
+  | 'deleteChapter' // ノードを削除する。削除した後の前後のchapterをつなげる
   | 'movePrevious' // 次のページに移動する
   | 'moveNext';
 
@@ -41,8 +40,8 @@ export interface Page {
   content?: string; // コンテンツのpathや本文
 }
 
-export interface Node {
-  kind:'node'
+export interface Chapter {
+  kind:'chapter'
   label: string;
   id: string;
   page: Page[];
@@ -57,7 +56,7 @@ export interface Project {
   projectName: string;
   projectId: string;
   author: Author;
-  node: Node[];
+  chapter: Chapter[];
 }
 
 export interface GameData {
@@ -66,10 +65,10 @@ export interface GameData {
 
 export interface DataAction {
   action: DataActionType
-  payloadProjectIndex?: number // NodeやProjectの編集先の配列のインデックス
-  payloadNodeIndex?: number
+  payloadProjectIndex?: number // ChapterやProjectの編集先の配列のインデックス
+  payloadChapterIndex?: number
   payloadProject?:Project
-  payloadNode?: Node
+  payloadChapter?: Chapter
   payloadPage?: Page
 }
 
@@ -91,5 +90,7 @@ export interface FileAction {
 //   projectId: string;
 //   author: Author;
 //   media: Media:
-//   node: Node[];
+//   chapter: Chapter[];
 // }
+
+// folderState

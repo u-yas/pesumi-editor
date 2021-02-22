@@ -2,7 +2,7 @@
 /**
  * ユーザーが指定したボタンを押したらeditorの方にテキストを挿入する
  */
-const NodeCommand:React.FC = () => {
+const CommandOptions:React.FC = () => {
   // ユーザーが書き込んだテキストファイルを管理するステート
   return (
     <>
@@ -11,4 +11,4 @@ const NodeCommand:React.FC = () => {
   )
 }
 
-export default NodeCommand
+export default CommandOptions

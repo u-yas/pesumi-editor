@@ -6,7 +6,7 @@
   "author": "u-yas<pesumi-organization@protonmail.com>",
   "main": "app/background.js",
   "scripts": {
-    "dev": "nextron",
+    "dev": "NODE_OPTIONS='--inspect' nextron",
     "build": "nextron build",
     "test": "jest",
     "postinstall": "electron-builder install-app-deps",
