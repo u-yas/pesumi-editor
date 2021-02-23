@@ -29,7 +29,7 @@ export interface Author {
 
 export interface Page {
   id:string
-  command: DataActionType;
+  command: PesumiDataActionType; //
   content?: string; // コンテンツのpathや本文
 }
 
