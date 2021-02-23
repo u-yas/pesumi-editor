@@ -4,7 +4,7 @@
 /**
  * 編集するデータのActionコマンド
  */
-export type DataActionType =
+export type PesumiDataActionType =
   | 'init'
   | 'addPage' // 指定したインデックスにページを追加する
   | 'deletePage' // 指定したインデックスのページを削除する
