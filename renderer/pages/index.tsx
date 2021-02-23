@@ -2,9 +2,8 @@ import electron from 'electron'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
-import { useContext } from 'react'
-import * as Type from '../interfaces/type'
-import { folderContext, usePesumi } from '../utils/customHooks/usePesumi'
+import * as Type from '../interfaces/projectType'
+import { usePesumi } from '../utils/customHooks/usePesumi'
 
 // 「新しいビジュアルノベルゲームを作成する」、
 // 「作成したゲームを閲覧する」、
@@ -14,8 +13,6 @@ import { folderContext, usePesumi } from '../utils/customHooks/usePesumi'
 const IndexPage:NextPage = () => {
   const router = useRouter()
   const { pesumiDispatch } = usePesumi()
-
-  let folderPathState = useContext(folderContext)
 
   return (
       <div>
@@ -33,7 +30,7 @@ const IndexPage:NextPage = () => {
               ipcRenderer.on('openProjectFolder', (_event:Event, value:{folderPath:string, projectJsonFile:Type.Project}) => {
                 try {
                   pesumiDispatch({ action: 'init', payloadProject: value.projectJsonFile })
-                  folderPathState = (value.folderPath)
+                  // 読み込んだプロジェクトフォルダーのpathをelectron-storeに保存し、永続化する
                   router.push('/edit')
                 } catch (err) {
                   console.log(`フォルダが正常に読み取れませんでした。\nエラーコード:${err}`)

@@ -1,4 +1,4 @@
-import { Page } from '../../../../interfaces/type'
+import { Page } from '../../../../interfaces/projectType'
 
 type Props = {
   command: Page
@@ -8,11 +8,11 @@ type Props = {
  * @param props
  */
 const CommandComponent:React.FC<Props> = (props:Props) => {
-  const { command, option, content } = props.command
+  const { id, command, content } = props.command
   return (
     <>
+    {id}
     {command}
-    {option}
     {content}
     </>
   )

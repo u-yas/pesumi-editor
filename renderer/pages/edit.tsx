@@ -1,10 +1,10 @@
-import React, { useLayoutEffect } from 'react'
-import { Resizable } from 're-resizable'
-import Settings from '../components/edit/setting'
-import View from '../components/edit/view/chapterView'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
+import { Resizable } from 're-resizable'
+import React, { useLayoutEffect } from 'react'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import Settings from '../components/edit/setting'
+import View from '../components/edit/view'
 import { usePesumi } from '../utils/customHooks/usePesumi'
 
 export type EditorState = {
@@ -62,9 +62,9 @@ const EditPage:NextPage = () => {
                 {/* コマンドリスト、サイドバーみたいな感じで表示する */}
                 <Settings />
                 {/* コマンドからのドロップ先、ドロップしたらコンテンツに応じてフォームが表示され、そこに入力をする */}
-                  <View />
+                  <View chapters={pesumiState.Chapter} />
               </DragDropContext>
-            </Resizable>
+          </Resizable>
       </editorStateContext.Provider>
   )
 }

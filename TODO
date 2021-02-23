@@ -1,4 +1,5 @@
 
 Todo:
-☐ 編集中のプロジェクトのフォルダーは、electron-storeを利用して、configに保存する。 @critical 
+☐ 編集中のプロジェクトのフォルダーは、electron-storeを利用して、configに保存する。 @high 
 ☐ 再生機能の搭載 
+☐ 

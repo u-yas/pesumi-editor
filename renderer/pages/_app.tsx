@@ -3,8 +3,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps /*, AppContext */ } from 'next/app'
 import { useReducer } from 'react'
 import Header from '../components/layout/header'
-import * as Type from '../interfaces/type'
-import { folderContext, pesumiGameContext, pesumiGameReducer } from '../utils/customHooks/usePesumi'
+import * as Type from '../interfaces/projectType'
+import { folderContext } from '../utils/customHooks/useFolder'
+import { pesumiGameContext, pesumiGameReducer } from '../utils/customHooks/usePesumi'
 
 /**
  * reducerの初期データ
@@ -12,6 +13,12 @@ import { folderContext, pesumiGameContext, pesumiGameReducer } from '../utils/cu
 const initialState:Type.Project = {
   projectName: '',
   projectId: '',
+  media: {
+    character: [],
+    bgImage: [],
+    bgm: [],
+    se: []
+  },
   author: {
     writer: [],
     illustrator: []

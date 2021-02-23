@@ -1,16 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { ReactNode, useContext, useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { Page } from '../../../interfaces/type'
-import { editorStateContext } from '../../../pages/edit'
-import CommandComponent from './components/commandComponent'
+import { Page } from '../../../../interfaces/projectType'
+import { editorStateContext } from '../../../../pages/edit'
+import CommandComponent from './commandComponent'
 
 type Props = {
   pages: Page[]
+  children?: ReactNode
 }
 
-const PagesView:React.FC<Props> = (props:Props) => {
+const PagesComponent:React.FC<Props> = (props:Props) => {
   const [, setEditorState] = useState(useContext(editorStateContext).state)
-  const { pages } = props
+  const { pages, children } = props
 
   return (
     <>
@@ -30,6 +31,7 @@ const PagesView:React.FC<Props> = (props:Props) => {
                   {/* ここにpagesのコンポーネントを表示する
                   Commandリストからコマンドがドロップされたらフォームを展開する */}
                   <CommandComponent command={value}/>
+                  {children}
                 </div>
               )
             }}
@@ -40,4 +42,4 @@ const PagesView:React.FC<Props> = (props:Props) => {
   )
 }
 
-export default PagesView
+export default PagesComponent
