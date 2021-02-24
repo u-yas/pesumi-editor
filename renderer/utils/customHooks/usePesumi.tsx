@@ -1,18 +1,38 @@
 import { createContext, useContext } from 'react'
-import type * as Type from '../../interfaces/type'
+import type * as Type from '../../interfaces/projectType'
 // const pesumiContext = createContext({} as any)
 // export const usePesumi =
-
+type PesumIContext  = {
+  pesumiState:Type.Project,
+  pesumiDispatch:React.Dispatch<Type.PesumiDataAction>
+}
 /**
- * .pesumiファイル(中身はjson)のコンテキストの初期化
+ * reducerの初期データ
  */
-export const pesumiGameContext = createContext({} as {
-  pesumiState: Type.Project,
-  pesumiDispatch: React.Dispatch<Type.DataAction>
+const initialState:Type.Project = {
+  projectName: '',
+  projectId: '',
+  media: {
+    character: [],
+    bgImage: [],
+    bgm: [],
+    se: []
+  },
+  author: {
+    writer: [],
+    illustrator: []
+  },
+  chapter: []
+}
+/**
+ * 
+ *pesumiDataの管理用コンテキスト
+ */
+export const pesumiDataContext = createContext<PesumiContext>({} as PesumIContext
 })
 
-export const pesumiGameReducer = (state: Type.Project, action:Type.DataAction):Type.Project => {
-  switch (action.action) {
+export const pesumiGameReducer = (state: Type.Project, action:Type.PesumiDataAction):Type.Project => {
+  switch (action.type) {
     // payloadで指定したデータで初期化する
     case 'init':
       if (action.payloadProject !== undefined) { state = action.payloadProject }
@@ -48,4 +68,4 @@ export const EditorCommandReducer = (state: string, action: Type.FileAction):str
 }
 
 // カスタムhooks
-export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.DataAction>; } => useContext(pesumiGameContext)
+export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.PesumiDataAction>; } => useContext(pesumiDataContext)

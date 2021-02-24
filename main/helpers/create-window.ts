@@ -4,6 +4,7 @@ import {
   BrowserWindowConstructorOptions
 } from 'electron'
 import Store from 'electron-store'
+import path from 'path'
 
 export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
   const key = 'window-state'
@@ -70,8 +71,9 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     ...options,
     ...state,
     webPreferences: {
-      nodeIntegration: true,
-      ...options.webPreferences
+      nodeIntegration: false,
+      ...options.webPreferences,
+      preload: path.join(__dirname, '/preload.js')
     }
   }
   const win = new BrowserWindow(browserOptions)

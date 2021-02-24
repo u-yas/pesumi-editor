@@ -1,6 +1,8 @@
 
 // 設定情報（著者名、プロジェクト名、メディア情報（キャラクターとか背景とか））の設定に必要に成る型
 
+import { GameCommand } from './gameActionType'
+
 /**
  * 編集するデータのActionコマンド
  */
@@ -14,7 +16,7 @@ export type PesumiDataActionType =
   | 'moveNext';
 
 export interface PesumiDataAction {
-  action: PesumiDataAction
+  type: PesumiDataActionType
   payloadProjectIndex?: number // ChapterやProjectの編集先の配列のインデックス
   payloadChapterIndex?: number
   payloadProject?:Project
@@ -29,7 +31,7 @@ export interface Author {
 
 export interface Page {
   id:string
-  command: PesumiDataActionType; //
+  command: GameCommand; //
   content?: string; // コンテンツのpathや本文
 }
 
