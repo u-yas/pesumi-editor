@@ -105,7 +105,7 @@ const ChapterComponent:React.FC<Props> = (props: Props) => {
                 <Tag backgroundColor="whiteAlpha.50">50</Tag>
               <OpenButton onClick={ () => setStatus(true)}/>
               {/* chapterの配列の添字をもとにreducer側でchapterを削除する */}
-              <CloseButton size="md" onClick={() => { pesumiDispatch({ action: 'deleteChapter', payloadChapterIndex: key }) }}/>
+              <CloseButton size="md" onClick={() => { pesumiDispatch({ type: 'deleteChapter', payloadChapterIndex: key }) }}/>
               </Box>
             </Grid>
           </Box>

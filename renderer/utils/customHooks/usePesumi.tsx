@@ -1,8 +1,8 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useReducer } from 'react'
 import type * as Type from '../../interfaces/projectType'
 // const pesumiContext = createContext({} as any)
 // export const usePesumi =
-type PesumIContext  = {
+type PesumIContext = {
   pesumiState:Type.Project,
   pesumiDispatch:React.Dispatch<Type.PesumiDataAction>
 }
@@ -25,11 +25,10 @@ const initialState:Type.Project = {
   chapter: []
 }
 /**
- * 
+ *
  *pesumiDataの管理用コンテキスト
  */
-export const pesumiDataContext = createContext<PesumiContext>({} as PesumIContext
-})
+export const pesumiDataContext = createContext({} as PesumIContext)
 
 export const pesumiGameReducer = (state: Type.Project, action:Type.PesumiDataAction):Type.Project => {
   switch (action.type) {
@@ -39,7 +38,7 @@ export const pesumiGameReducer = (state: Type.Project, action:Type.PesumiDataAct
       // page単位を編集し終わったらchapterの中に追加する
       return state
     case 'addPage' :
-      if (action.payloadChapterIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) { state.chapter[action.payloadChapterIndex].page.splice(action.payloadProjectIndex, 0, action.payloadPage) }
+      if (action.payloadChapterIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) { state.chapter[action.payloadChapterIndex].pages.splice(action.payloadProjectIndex, 0, action.payloadPage) }
       return state
     case 'deleteChapter':
       if (action.payloadChapterIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) {
@@ -53,19 +52,17 @@ export const pesumiGameReducer = (state: Type.Project, action:Type.PesumiDataAct
   }
 }
 
-/**
- * ファイルを読み込んだり、消したり、ファイル内のデータをパースしたりを管理するためのReducer
- * @param state
- * @param action
- */
-export const EditorCommandReducer = (state: string, action: Type.FileAction):string => {
-  switch (action.command) {
-    case 'text':
-      return state
-    default:
-      return state
-  }
-}
-
 // カスタムhooks
 export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.PesumiDataAction>; } => useContext(pesumiDataContext)
+
+const PesumiProvider:React.FC = (props) => {
+  const [pesumiState, pesumiDispatch] = useReducer(pesumiGameReducer, initialState)
+
+  return (
+    <pesumiDataContext.Provider value={{ pesumiState, pesumiDispatch }} >
+        {props.children}
+    </pesumiDataContext.Provider>
+  )
+}
+
+export default PesumiProvider

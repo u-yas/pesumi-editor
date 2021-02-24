@@ -29,7 +29,7 @@ const IndexPage:NextPage = () => {
             if (ipcRenderer) {
               ipcRenderer.on('openProjectFolder', (_event:Event, value:{folderPath:string, projectJsonFile:Type.Project}) => {
                 try {
-                  pesumiDispatch({ action: 'init', payloadProject: value.projectJsonFile })
+                  pesumiDispatch({ type: 'init', payloadProject: value.projectJsonFile })
                   // 読み込んだプロジェクトフォルダーのpathをelectron-storeに保存し、永続化する
                   router.push('/edit')
                 } catch (err) {

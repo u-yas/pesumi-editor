@@ -1,4 +1,4 @@
-import * as Type from '../../../../interfaces/type'
+import type * as Type from '../../../../interfaces/projectType'
 import { usePesumi } from '../../../../utils/customHooks/usePesumi'
 /**
  *ボタンを押すと空のノードを作成する
@@ -10,12 +10,12 @@ const AddChapterButton: React.FC = () => {
     <>
       <div
         onClick={() => {
-          pesumiDispatch({ action: 'addChapter', payloadChapter: {} as Type.Chapter })
+          pesumiDispatch({ type: 'addChapter', payloadChapter: {} as Type.Chapter })
         }}
         role='button'
         tabIndex={0}
         onKeyDown={() => {
-          pesumiDispatch({ action: 'addChapter', payloadChapter: {} as Type.Chapter })
+          pesumiDispatch({ type: 'addChapter', payloadChapter: {} as Type.Chapter })
         }}>
 
       </div>

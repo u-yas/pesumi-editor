@@ -7,15 +7,6 @@ import Settings from '../components/edit/setting'
 import View from '../components/edit/view'
 import { usePesumi } from '../utils/customHooks/usePesumi'
 
-export type EditorState = {
-  state: 'Chapter'|'Pages'|'Page';
-  index: {
-    chapterIndex: number
-    pagesIndex: number
-  }
-}
-
-export const editorStateContext : React.Context<EditorState> = React.createContext({} as EditorState)
 /**
  * 開いたときに新規作成化既存のファイルかを選択する。
  * 新規の場合->プロジェクト名を入力させる
@@ -40,7 +31,7 @@ const EditPage:NextPage = () => {
     switch (source.droppableId) {
       case destination?.droppableId:
         pesumiDispatch({
-          action: 'init'
+          type: 'init'
         })
     }
 
@@ -56,16 +47,14 @@ const EditPage:NextPage = () => {
   }
 
   return (
-      <editorStateContext.Provider value={{ state: 'Chapter', index: { chapterIndex: 0, pagesIndex: 0 } }} >
         <Resizable >
               <DragDropContext onDragEnd={onDragEnd}>
                 {/* コマンドリスト、サイドバーみたいな感じで表示する */}
                 <Settings />
                 {/* コマンドからのドロップ先、ドロップしたらコンテンツに応じてフォームが表示され、そこに入力をする */}
-                  <View chapters={pesumiState.Chapter} />
+                  <View chapters={pesumiState.chapter} />
               </DragDropContext>
           </Resizable>
-      </editorStateContext.Provider>
   )
 }
 
