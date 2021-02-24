@@ -9,6 +9,7 @@ import { usePesumi } from '../utils/customHooks/usePesumi'
 // 「作成したゲームを閲覧する」、
 // 「作成したゲームを配布する」、
 // 「このソフトの使い方」の画面をそれぞれ用意する
+const ipcRenderer = electron.ipcRenderer || false
 
 const IndexPage:NextPage = () => {
   const router = useRouter()
@@ -22,12 +23,13 @@ const IndexPage:NextPage = () => {
           </Link>
         </p>
         <p>
-          <button onClick={() => {
+          <button onClick={(e) => {
             // プロジェクトフォルダーのパスを取得する
             // ipcRenderを使えるようにする
-            const ipcRenderer = electron.ipcRenderer || false
+            e.preventDefault()
             if (ipcRenderer) {
-              ipcRenderer.on('openProjectFolder', (_event:Event, value:{folderPath:string, projectJsonFile:Type.Project}) => {
+              (async () => {
+                const value:{value:string, projectJsonFile:Type.Project} = await ipcRenderer.invoke('openProjectFolder', '')
                 try {
                   pesumiDispatch({ type: 'init', payloadProject: value.projectJsonFile })
                   // 読み込んだプロジェクトフォルダーのpathをelectron-storeに保存し、永続化する
@@ -35,7 +37,7 @@ const IndexPage:NextPage = () => {
                 } catch (err) {
                   console.log(`フォルダが正常に読み取れませんでした。\nエラーコード:${err}`)
                 }
-              })
+              })()
             }
           }}
           >

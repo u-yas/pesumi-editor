@@ -7,6 +7,7 @@ const Header:React.FC = () => {
         <Link href='/'>
           <a>
             {/* SVGのアイコンをreact-icon形式で載せる */}
+            ホーム画面
           </a>
         </Link>
         <div>

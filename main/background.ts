@@ -1,9 +1,9 @@
 import { app, ipcMain, IpcMainEvent, Menu } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
+import changeCharacterFolderName from './helpers/ipc/changeFolderName'
 import openProjectFolder from './helpers/ipc/openProjectFolder'
 import openStandingCharacterImage from './helpers/ipc/openStandingCharacterImage'
-import changeCharacterFolderName from './helpers/ipc/changeFolderName'
 
 const isProd: boolean = process.env.NODE_ENV === 'production'
 
@@ -12,15 +12,13 @@ if (isProd) {
 } else {
   app.setPath('userData', `${app.getPath('userData')} (development)`)
 }
-
-const mainWindow = createWindow('main', {
-  width: 1000,
-  height: 600
-});
-
+let mainWindow
 (async () => {
   await app.whenReady()
-
+  mainWindow = createWindow('main', {
+    width: 1000,
+    height: 600
+  })
   if (isProd) {
     await mainWindow.loadURL('app://./home.html')
   } else {
@@ -33,6 +31,7 @@ const mainWindow = createWindow('main', {
 app.on('window-all-closed', () => {
   app.quit()
 })
+
 // メニューバー
 Menu.setApplicationMenu(Menu.buildFromTemplate([
   {
@@ -83,6 +82,7 @@ ipcMain.on('message', (event: IpcMainEvent, message: unknown) => {
 // チャネルopenProjectFolderは/renderer/pages/index.tsxにあり、プロジェクトフォルダを開く
 ipcMain.handle('openProjectFolder', async () => {
   // const projectJson = readFile()
+  console.log('ここまで届いてる')
   return await openProjectFolder(mainWindow)
 })
 

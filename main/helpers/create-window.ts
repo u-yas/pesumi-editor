@@ -4,7 +4,6 @@ import {
   BrowserWindowConstructorOptions
 } from 'electron'
 import Store from 'electron-store'
-import path from 'path'
 
 export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
   const key = 'window-state'
@@ -15,6 +14,8 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     height: options.height
   }
   let state = {}
+  // eslint-disable-next-line prefer-const
+  let win
 
   const restore = () => store.get(key, defaultSize)
 
@@ -29,7 +30,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     }
   }
 
-  const windowWithinBounds = (windowState: { x: number; y: number; width; height }, bounds: Electron.Rectangle):boolean => {
+  const windowWithinBounds = (windowState, bounds) => {
     return (
       windowState.x >= bounds.x &&
       windowState.y >= bounds.y &&
@@ -46,7 +47,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     })
   }
 
-  const ensureVisibleOnSomeDisplay = (windowState) => {
+  const ensureVisibleOnSomeDisplay = windowState => {
     const visible = screen.getAllDisplays().some(display => {
       return windowWithinBounds(windowState, display.bounds)
     })
@@ -71,12 +72,11 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     ...options,
     ...state,
     webPreferences: {
-      nodeIntegration: false,
-      ...options.webPreferences,
-      preload: path.join(__dirname, '/preload.js')
+      nodeIntegration: true,
+      ...options.webPreferences
     }
   }
-  const win = new BrowserWindow(browserOptions)
+  win = new BrowserWindow(browserOptions)
 
   win.on('close', saveState)
 
