@@ -9,7 +9,7 @@ type PesumIContext = {
 /**
  * reducerの初期データ
  */
-const initialState:Type.Project = {
+export const initialState:Type.Project = {
   projectName: '',
   projectId: '',
   media: {

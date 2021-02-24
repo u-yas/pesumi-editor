@@ -12,7 +12,7 @@
                                 "standingImage": [
                                         {
                                                 "label": "通常",
-                                                "fileName": "uyas-normal.png",
+                                                "fileName": "uyas-normal.png"
                                         },
                                         {
                                                 "label": "怒った顔",
@@ -37,6 +37,12 @@
                         {
                                 "label": "登校中",
                                 "fileName": "gotoSchool.mp3"
+                        }
+                ],
+                "se": [
+                        {
+                                "label": "殴られる音",
+                                "fileName": "boko.mp3"
                         }
                 ]
         },

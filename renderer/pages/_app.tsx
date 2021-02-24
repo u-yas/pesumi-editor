@@ -7,12 +7,12 @@ import PesumiProvider from '../utils/customHooks/usePesumi'
 const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+        <PesumiProvider>
           <ChakraProvider>
-            <PesumiProvider>
-              <Header />
-              <Component {...pageProps} />
-            </PesumiProvider>
-          </ChakraProvider>
+            <Header />
+            <Component {...pageProps} />
+            </ChakraProvider>
+        </PesumiProvider>
     </>
   )
 }
