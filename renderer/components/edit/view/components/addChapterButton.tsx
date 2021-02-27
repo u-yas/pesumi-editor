@@ -1,3 +1,4 @@
+import { Chapter } from '../../../../interfaces/projectType'
 import { usePesumi } from '../../../../utils/customHooks/usePesumi'
 /**
  *ボタンを押すと空のノードを作成する

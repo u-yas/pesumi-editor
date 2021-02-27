@@ -24,17 +24,17 @@ const IndexButton:React.FC<Props> = (props:Props) => {
         boxShadow='lg'
       >
 
-        <Text
-          justifyContent="center"
-          alignItems="center"
-          fontSize={['md', '2xl', '3xl', '3xl']}
-          fontWeight="bold"
-          color='blackAlpha.900'
-        >
-          <div style={{ WebkitTextStrokeColor: 'white', WebkitTextStrokeWidth: '0.4px' }}>
-            {props.text}
-          </div>
-        </Text>
+      <div style={{ WebkitTextStrokeColor: 'white', WebkitTextStrokeWidth: '0.4px' }}>
+          <Text
+            justifyContent="center"
+            alignItems="center"
+            fontSize={['md', '2xl', '3xl', '3xl']}
+            fontWeight="bold"
+            color='blackAlpha.900'
+          >
+              {props.text}
+          </Text>
+        </div>
       </Box>
     </Link>
   )
