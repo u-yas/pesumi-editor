@@ -25,7 +25,8 @@
     "rules": {
         // We will use TypeScript"s types for component props instead
         "react/prop-types": "off",
-        
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions":"off",
         // No need to import React when using Next.js
         "react/react-in-jsx-scope": "off",
         "no-use-before-define": "off",

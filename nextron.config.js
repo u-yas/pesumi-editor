@@ -1,12 +1,11 @@
 module.exports = {
-  // specify an alternate main src directory, defaults to 'main'
-  mainSrcDir: 'main',
-  // specify an alternate renderer src directory, defaults to 'renderer'
-  rendererSrcDir: 'renderer',
-
-  // main process' webpack config
-  webpack: (defaultConfig) => {
-    // do some stuff here
-    return defaultConfig
-  }
+  webpack: (defaultConfig) =>
+    Object.assign(defaultConfig, {
+      mode: 'development',
+      devtool: 'source-map',
+      entry: {
+        background: './main/background.ts',
+        preload: './main/helpers/preload.ts'
+      }
+    })
 }

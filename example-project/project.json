@@ -1,0 +1,74 @@
+{
+  "projectName": "u-yasの大冒険",
+  "projectId": "jfioeafhau",
+  "author": {
+          "writer": ["u-yas"],
+          "illustrator": ["pompompurin"]
+  },
+  "media": {
+          "character": [
+                  {
+                          "name": "u-yas",
+                          "standingImage": [
+                                  {
+                                          "label": "通常",
+                                          "fileName": "uyas-normal.png"
+                                  },
+                                  {
+                                          "label": "怒った顔",
+                                          "fileName": "uyas-anger.png"
+                                  }
+                          ],
+                          "voice": [
+                          ]
+                  }
+          ],
+          "backgroundImage": [
+                  {
+                          "label": "学校の校門",
+                          "fileName": "FrontSchool.png"
+                  },
+                  {
+                          "label": "教室",
+                          "fileName": "class.png"
+                  }
+          ],
+          "bgm": [
+                  {
+                          "label": "登校中",
+                          "fileName": "gotoSchool.mp3"
+                  }
+          ],
+          "se": [
+                  {
+                          "label": "殴られる音",
+                          "fileName": "boko.mp3"
+                  }
+          ]
+  },
+  "chapter": [
+          {
+                  "label":"冒頭",
+                  "id":4353534,
+                  "page": [
+                          {
+                                  "command":"text",
+                                  "option":{
+                                          "type": "normal",
+                                          "font": "nard-font"
+                                  },
+                                  "text":"fjeohafheiuahfuiahfiuhaiuefh"
+                          },
+
+                          {
+                                  "command": "text",
+                                  "option": {
+                                          "type":"voice",
+                                          "path":"./u-yas/feafea"
+                                  }
+                          }
+                  ]
+          }
+
+  ]
+}

@@ -2,10 +2,9 @@ import { Button } from '@chakra-ui/react'
 import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import * as uuid from 'uuid'
-import type { Chapter } from '../../interfaces/projectType'
+import { Chapter } from '../../interfaces/projectType'
 import AddChapterButton from './view/components/addChapterButton'
 import ChapterComponent from './view/components/ChapterComponent'
-
 type Props = {
   chapters: Chapter[] // chapterの中にpages[]のデータも入っている
 }

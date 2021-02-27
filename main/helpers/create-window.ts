@@ -2,8 +2,11 @@ import {
   screen,
   BrowserWindow,
   BrowserWindowConstructorOptions
+  // app
 } from 'electron'
 import Store from 'electron-store'
+import path from 'path'
+// import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
 
 export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
   const key = 'window-state'
@@ -15,7 +18,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   }
   let state = {}
   // eslint-disable-next-line prefer-const
-  let win
+  let win: BrowserWindow
 
   const restore = () => store.get(key, defaultSize)
 
@@ -72,13 +75,20 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     ...options,
     ...state,
     webPreferences: {
-      nodeIntegration: true,
-      ...options.webPreferences
+      nodeIntegration: false,
+      contextIsolation: true,
+      ...options.webPreferences,
+      preload: path.join(__dirname, 'preload.js')
     }
   }
   win = new BrowserWindow(browserOptions)
 
   win.on('close', saveState)
-
+  // Reactのデベロッパーツール読み込み
+  // app.whenReady().then(() => {
+  //   installExtension(REACT_DEVELOPER_TOOLS)
+  //     .then(name => console.log('addedExtendion' + name))
+  //     .catch(err => { console.log('拡張機能読み込み失敗' + err) })
+  // })
   return win
 }

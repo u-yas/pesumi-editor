@@ -1,8 +1,8 @@
 import { dialog } from 'electron'
 import { readFileSync } from 'fs'
-import type { Project } from '../../../renderer/interfaces/projectType'
+import { Project } from '../../../renderer/interfaces/projectType'
 
-interface ReturnOpenFolder {
+export interface ReturnOpenFolder {
   path: string
   projectJsonData: Project
 }
@@ -11,7 +11,7 @@ interface ReturnOpenFolder {
  * @param mainWindow :Electron.BrowserWindow
  */
 export const openProjectFolder = (mainWindow:Electron.BrowserWindow):Promise<ReturnOpenFolder| null> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const folderPath = dialog.showOpenDialogSync(mainWindow, {
       buttonLabel: '開く',
       properties: [
@@ -29,7 +29,14 @@ export const openProjectFolder = (mainWindow:Electron.BrowserWindow):Promise<Ret
         }
         resolve(returnValue)
       } catch (err) {
-        reject(console.log('jsonファイルの読み込みでエラーが発生しました¥n' + err))
+        dialog.showMessageBoxSync(mainWindow, {
+          type: 'error',
+          buttons: ['はい'],
+          title: '読み込みエラー',
+          message: 'フォルダの読み込みでエラーが発生しました。',
+          detail: '正しいフォルダを選択してください。'
+        })
+        resolve(null)
       }
     }
   })

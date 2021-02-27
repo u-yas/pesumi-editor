@@ -1,6 +1,3 @@
-
-// 設定情報（著者名、プロジェクト名、メディア情報（キャラクターとか背景とか））の設定に必要に成る型
-
 import { GameCommand } from './gameActionType'
 
 /**
@@ -15,6 +12,9 @@ export type PesumiDataActionType =
   | 'movePrevious' // 次のページに移動する
   | 'moveNext';
 
+/**
+   * Editorで編集するPesumiDataのreducerで使うaction type
+   */
 export interface PesumiDataAction {
   type: PesumiDataActionType
   payloadProjectIndex?: number // ChapterやProjectの編集先の配列のインデックス

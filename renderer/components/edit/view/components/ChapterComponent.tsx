@@ -2,7 +2,7 @@
 import { Box, CloseButton, Flex, Grid, Tag, Textarea } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import type { Chapter } from '../../../../interfaces/projectType'
+import { Chapter } from '../../../../interfaces/projectType'
 import { usePesumi } from '../../../../utils/customHooks/usePesumi'
 import OpenButton from './openButton'
 import PagesComponent from './pagesComponent'

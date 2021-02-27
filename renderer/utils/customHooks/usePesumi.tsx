@@ -1,15 +1,15 @@
 import { createContext, useContext, useReducer } from 'react'
-import type * as Type from '../../interfaces/projectType'
+import { PesumiDataAction, Project } from '../../interfaces/projectType'
 // const pesumiContext = createContext({} as any)
 // export const usePesumi =
 type PesumIContext = {
-  pesumiState:Type.Project,
-  pesumiDispatch:React.Dispatch<Type.PesumiDataAction>
+  pesumiState:Project,
+  pesumiDispatch:React.Dispatch<PesumiDataAction>
 }
 /**
  * reducerの初期データ
  */
-export const initialState:Type.Project = {
+export const initialState:Project = {
   projectName: '',
   projectId: '',
   media: {
@@ -30,7 +30,7 @@ export const initialState:Type.Project = {
  */
 export const pesumiDataContext = createContext({} as PesumIContext)
 
-export const pesumiGameReducer = (state: Type.Project, action:Type.PesumiDataAction):Type.Project => {
+export const pesumiGameReducer = (state: Project, action:PesumiDataAction):Project => {
   switch (action.type) {
     // payloadで指定したデータで初期化する
     case 'init':
@@ -53,7 +53,7 @@ export const pesumiGameReducer = (state: Type.Project, action:Type.PesumiDataAct
 }
 
 // カスタムhooks
-export const usePesumi = ():{ pesumiState: Type.Project; pesumiDispatch: React.Dispatch<Type.PesumiDataAction>; } => useContext(pesumiDataContext)
+export const usePesumi = ():{ pesumiState: Project; pesumiDispatch: React.Dispatch<PesumiDataAction>; } => useContext(pesumiDataContext)
 
 const PesumiProvider:React.FC = (props) => {
   const [pesumiState, pesumiDispatch] = useReducer(pesumiGameReducer, initialState)

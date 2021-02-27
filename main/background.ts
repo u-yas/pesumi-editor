@@ -12,7 +12,7 @@ if (isProd) {
 } else {
   app.setPath('userData', `${app.getPath('userData')} (development)`)
 }
-let mainWindow
+let mainWindow: Electron.BrowserWindow
 (async () => {
   await app.whenReady()
   mainWindow = createWindow('main', {
@@ -82,7 +82,6 @@ ipcMain.on('message', (event: IpcMainEvent, message: unknown) => {
 // チャネルopenProjectFolderは/renderer/pages/index.tsxにあり、プロジェクトフォルダを開く
 ipcMain.handle('openProjectFolder', async () => {
   // const projectJson = readFile()
-  console.log('ここまで届いてる')
   return await openProjectFolder(mainWindow)
 })
 
