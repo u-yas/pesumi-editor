@@ -70,7 +70,7 @@ export const pesumiDataReducer = (state: Project, action:PesumiDataAction):Proje
 }
 
 // カスタムhooks
-export const usePesumi = ():{ pesumiState: Project; pesumiDispatch: React.Dispatch<PesumiDataAction>; } => useContext(pesumiDataContext)
+export const usePesumi = ():{ pesumiState: Project; pesumiDispatch: React.Dispatch<PesumiDataAction>} => useContext(pesumiDataContext)
 
 const PesumiProvider:React.FC = (props) => {
   const [pesumiState, pesumiDispatch] = useReducer(pesumiDataReducer, initialState)

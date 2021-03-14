@@ -1,19 +1,21 @@
 
 import { Flex, Grid, Text, Input, Stack } from '@chakra-ui/react'
-import { AddIcon, ArrowDownIcon } from '@chakra-ui/icons'
+import { AddIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { Chapter } from '../../../../interfaces/projectType'
+import { usePesumi } from '../../../../utils/customHooks/usePesumi'
 // import OpenButton from './openButton'
 
 type Props = {
   chapter: Chapter
-  key: number
-  id: Chapter['id']
+  index: number
 }
 /**
  * クリックしたときnodeが展開して、ページの配列とテキストが表示されるようにする
+ * 必要: Chapterの追加と削除できるボタン
  */
-const ChapterComponent:React.FC<Props> = ({ chapter, key, id }: Props) => {
+const ChapterComponent:React.FC<Props> = ({ chapter, index }: Props) => {
+  const { pesumiState } = usePesumi()
   return (
     <Flex flexDirection="column">
       <Flex
@@ -24,7 +26,6 @@ const ChapterComponent:React.FC<Props> = ({ chapter, key, id }: Props) => {
         maxHeight='200px'
         ml='auto'
         mr='auto'
-        onDoubleClick={() => setStatus(true)}
       >
         <Input
           borderRadius={0}
@@ -33,6 +34,7 @@ const ChapterComponent:React.FC<Props> = ({ chapter, key, id }: Props) => {
           size="sm"
           borderColor="gray"
           defaultValue={chapter.label}
+          onChange={(e) => { pesumiState.chapter[index].label = e.target.value }}
         />
         <Grid
           templateColumns="repeat(3, 1fr)"
@@ -44,7 +46,7 @@ const ChapterComponent:React.FC<Props> = ({ chapter, key, id }: Props) => {
           borderColor="gray"
         >
           <Text fontSize="xs">文字数:</Text>
-          <Text fontSize="xs">3443</Text>
+          <Text fontSize="xs">{pesumiState.chapter[index].pages.ma}</Text>
           <Stack spacing={2} />
           <Text fontSize="xs">ページ数:</Text>
           <Text fontSize="xs">50</Text>
@@ -52,7 +54,6 @@ const ChapterComponent:React.FC<Props> = ({ chapter, key, id }: Props) => {
         </Grid>
         <Grid templateColumns="repeat(3, 1fr)" gap={10}>
           <Stack spacing={2} />
-          <ArrowDownIcon boxSize={9} onClick={() => setStatus(true)}/>
           <AddIcon mt='3' />
         </Grid>
       </Flex>

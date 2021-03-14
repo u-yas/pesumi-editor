@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import PagesComponent from './pagesComponent'
-import { CloseButton } from '@chakra-ui/react'
+import { CloseButton, Icon as OpenButton } from '@chakra-ui/react'
+import { FaRegFolderOpen } from 'react-icons/fa'
 import ChapterComponent from './ChapterComponent'
-import AddChapterButton from './addChapterButton'
 import { Chapter } from '../../../../interfaces/projectType'
 interface Props {
   chapter:Chapter
@@ -27,8 +27,14 @@ export const ChapterOrPages:React.VFC<Props> = ({ chapter, key }:Props) => {
         //
         : <>
       {/* ここにChapterのコンポーネント */}
-      <ChapterComponent key={key} chapter={chapter} id={chapter.id} />
-      <AddChapterButton />
+      <ChapterComponent index={key} chapter={chapter} >
+        <OpenButton
+          as={FaRegFolderOpen}
+          onClick={() => setStatus(false)}
+          onKeyDown={() => setStatus(false)}
+          tabIndex={0}
+        />
+      </ChapterComponent>
       </>
       }
     </>
