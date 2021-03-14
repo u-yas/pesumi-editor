@@ -30,18 +30,35 @@ export const initialState:Project = {
  */
 export const pesumiDataContext = createContext({} as PesumIContext)
 
-export const pesumiGameReducer = (state: Project, action:PesumiDataAction):Project => {
+export const pesumiDataReducer = (state: Project, action:PesumiDataAction):Project => {
   switch (action.type) {
     // payloadで指定したデータで初期化する
     case 'init':
-      if (action.payloadProject !== undefined) { state = action.payloadProject }
+      if (action.payloadProject !== undefined) {
+        state = action.payloadProject
+      }
       // page単位を編集し終わったらchapterの中に追加する
       return state
     case 'addPage' :
-      if (action.payloadChapterIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) { state.chapter[action.payloadChapterIndex].pages.splice(action.payloadProjectIndex, 0, action.payloadPage) }
+      if (action.payloadChapterIndex !== undefined &&
+          action.payloadProjectIndex !== undefined &&
+          action.payloadPage !== undefined
+      ) {
+        state.chapter[action.payloadChapterIndex].pages.splice(action.payloadProjectIndex, 0, action.payloadPage)
+        return state
+      }
+      return state
+    case 'sortChapter':
+      if (action.payloadChapters !== undefined) {
+        state.chapter = action.payloadChapters
+        return state
+      }
       return state
     case 'deleteChapter':
-      if (action.payloadChapterIndex !== undefined && action.payloadProjectIndex !== undefined && action.payloadPage !== undefined) {
+      if (action.payloadChapterIndex !== undefined &&
+        action.payloadProjectIndex !== undefined &&
+        action.payloadPage !== undefined
+      ) {
         state.chapter.splice(action.payloadChapterIndex)
         return state
       } else {
@@ -56,7 +73,7 @@ export const pesumiGameReducer = (state: Project, action:PesumiDataAction):Proje
 export const usePesumi = ():{ pesumiState: Project; pesumiDispatch: React.Dispatch<PesumiDataAction>; } => useContext(pesumiDataContext)
 
 const PesumiProvider:React.FC = (props) => {
-  const [pesumiState, pesumiDispatch] = useReducer(pesumiGameReducer, initialState)
+  const [pesumiState, pesumiDispatch] = useReducer(pesumiDataReducer, initialState)
 
   return (
     <pesumiDataContext.Provider value={{ pesumiState, pesumiDispatch }} >
