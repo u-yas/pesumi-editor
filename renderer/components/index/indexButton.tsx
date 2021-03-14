@@ -16,7 +16,8 @@ const IndexButton:React.FC<Props> = (props:Props) => {
         mt="3vh"
         mb="3vh"
         onClick={() => props.onClick}
-        _active={{ bg: '#4AC699' }}
+        _active={{ transform: 'scale(0.98)' }}
+        _hover={{ backgroundColor: '#4AC699' }}
         width={['100px', '200px', '250px', '250px']}
         height={['50px', '70px', '100px', '90px']}
         borderRadius="10px"

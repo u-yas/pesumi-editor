@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import IndexButton from '../components/index/indexButton'
 import { usePesumi } from '../utils/customHooks/usePesumi'
 import { ReturnOpenFolder } from '../../main/helpers/ipc/openProjectFolder'
@@ -46,16 +46,16 @@ const IndexPage:NextPage = () => {
                       router.push('/edit')
                     }
                   })()
-                }
+                } else alert('window.myIPcRendererが見つからなかった.value=')
               } else {
                 console.log('pesumiStateはnullじゃなかった' + JSON.stringify(pesumiState) + '\n' + pesumiState.projectName)
+                router.push('/edit')
               }
             }}>
             <IndexButton text='開く' />
           </div>
             <IndexButton text='設定' href='/setting' />
             <IndexButton text='PeSuMiとは' href='/about' />
-            <Text>{pesumiState.projectName}</Text>
       </Box>
     </>
 

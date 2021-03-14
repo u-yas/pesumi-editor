@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import SplitPane from 'react-split-pane'
 import React, { } from 'react'
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import Settings from '../components/edit/setting'
 import View from '../components/edit/view'
 import { usePesumi } from '../utils/customHooks/usePesumi'
@@ -19,7 +18,7 @@ const styles = {
  * 既存のファイルを開く場合は、エクスポートする既存のファイルのフォルダを選択する
  */
 const EditPage:NextPage = () => {
-  const { pesumiState, pesumiDispatch } = usePesumi()
+  const { pesumiState } = usePesumi()
   // pesumiStateの変化に伴う副作用を管理する
   // useEffect(() => {
   //   if(pesumiState)
@@ -27,19 +26,6 @@ const EditPage:NextPage = () => {
   //     cleanup
   //   }
   // }, [input])
-  const onDragEnd = (result:DropResult) => {
-    if (result.type === 'CHAPTER') {
-      const items = Array.from(pesumiState.chapter)
-      const [reorderedItem] = items.splice(result.source.index, 1)
-      items.splice(result.destination.index, 0, reorderedItem)
-      pesumiDispatch({
-        type: 'sortChapter', payloadChapters: items
-      })
-    }else if(result.type === 'PAGES') {
-      const items = Array.from(pesumiState.chapter[result.source.index].pages)
-      const [reorderItem] = items.splice(result.)
-    }
-  }
 
   return (
     <>
@@ -50,9 +36,7 @@ const EditPage:NextPage = () => {
       </div>
         {/* コマンドからのドロップ先、ドロップしたらコンテンツに応じてフォームが表示され、そこに入力をする */}
       <div style={{ overflow: 'hidden' }}>
-        <DragDropContext onDragEnd={onDragEnd}>
             <View chapters={pesumiState.chapter} />
-        </DragDropContext>
       </div>
     </SplitPane>
     </>

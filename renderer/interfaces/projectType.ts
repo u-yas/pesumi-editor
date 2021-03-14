@@ -7,6 +7,8 @@ export type PesumiDataActionType =
   | 'init'
   | 'addPage' // 指定したインデックスにページを追加する
   | 'deletePage' // 指定したインデックスのページを削除する
+  | 'sortChapter'
+  | 'sortPages' // react-beautiful-dndで並び替える
   | 'addChapter' // ノードを指定したインデックスに付与する
   | 'deleteChapter' // ノードを削除する。削除した後の前後のchapterをつなげる
   | 'movePrevious' // 次のページに移動する
@@ -20,8 +22,11 @@ export interface PesumiDataAction {
   payloadProjectIndex?: number // ChapterやProjectの編集先の配列のインデックス
   payloadChapterIndex?: number
   payloadProject?:Project
+  payloadChapters?:Chapter[]
   payloadChapter?: Chapter
+  payloadPages?: Page[]
   payloadPage?: Page
+
 }
 
 export interface Author {

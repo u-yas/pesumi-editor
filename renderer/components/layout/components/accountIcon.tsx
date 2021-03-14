@@ -10,9 +10,9 @@ const AccoutIcon:React.FC = () => {
         {/* アカウント連携機能 */}
         <Icon
          as={IoPersonCircleOutline}
-         boxSize="7"
+         boxSize="9"
          mr="9"
-         onMouseOver={() => setControlled(true)}
+         onClick={() => isControlled ? setControlled(false) : setControlled(true)}
          onMouseLeave={() => setControlled(false)}
          />
         <Slide direction='bottom' style={{ zIndex: 10 }} in={isControlled}>
@@ -23,6 +23,7 @@ const AccoutIcon:React.FC = () => {
             bg="teal.500"
             rounded="md"
             shadow="md"
+            fontSize='xl'
           >
             α版では、アカウント連携機能をご利用いただけません。pesumi.comで
           </Box>

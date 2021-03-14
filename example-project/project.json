@@ -68,7 +68,50 @@
                                   }
                           }
                   ]
-          }
+          },         
+           {
+                "label":"冒頭",
+                "id":4353534,
+                "page": [
+                        {
+                                "command":"text",
+                                "option":{
+                                        "type": "normal",
+                                        "font": "nard-font"
+                                },
+                                "text":"fjeohafheiuahfuiahfiuhaiuefh"
+                        },
 
+                        {
+                                "command": "text",
+                                "option": {
+                                        "type":"voice",
+                                        "path":"./u-yas/feafea"
+                                }
+                        }
+                ]
+        },
+        {
+                "label":"冒頭",
+                "id":4353534,
+                "page": [
+                        {
+                                "command":"text",
+                                "option":{
+                                        "type": "normal",
+                                        "font": "nard-font"
+                                },
+                                "text":"fjeohafheiuahfuiahfiuhaiuefh"
+                        },
+
+                        {
+                                "command": "text",
+                                "option": {
+                                        "type":"voice",
+                                        "path":"./u-yas/feafea"
+                                }
+                        }
+                ]
+        }
   ]
 }

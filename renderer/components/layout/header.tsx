@@ -1,8 +1,8 @@
-import { Box, Flex, Text, Link } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 import AccoutIcon from './components/accountIcon'
 import CloudIcon from './components/cloudIcon'
-
+import Link from 'next/link'
 const Header:React.FC = () => {
   return (
     <>
@@ -15,13 +15,15 @@ const Header:React.FC = () => {
       justifyContent="flex-start"
     >
       <Box>
-        <Link href="/">
+      <Link href="/">
           <Text
-            color="whiteAlpha.900"
+            textColor='white'
             fontWeight="bold"
-            fontSize="18px"
+            fontSize="1.5rem"
             m={0}
             p={0}
+            cursor='default'
+            _hover={{ textColor: '#C4C4C4' }}
           >
             PeSuMi Editor
           </Text>
