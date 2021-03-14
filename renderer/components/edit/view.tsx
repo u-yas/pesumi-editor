@@ -1,43 +1,31 @@
-import { Button } from '@chakra-ui/react'
+
+import { CloseButton, Flex, Grid, Text, Input, Stack } from '@chakra-ui/react'
+import { AddIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import React from 'react'
-import { Droppable } from 'react-beautiful-dnd'
-import * as uuid from 'uuid'
-import { Chapter } from '../../interfaces/projectType'
-import AddChapterButton from './view/components/addChapterButton'
-import ChapterComponent from './view/components/ChapterComponent'
+import type { Chapter } from '../../interfaces/projectType'
+// import OpenButton from './openButton'
+import { ChapterOrPages } from './view/components/chapterOrPages'
 type Props = {
   chapters: Chapter[] // chapterの中にpages[]のデータも入っている
 }
-// import PagesView from './view/components/pagesComponent'
-/**
- *pesumiState.Chapter[]のデータをmapで展開する
- */
+
 const View:React.FC<Props> = (props:Props) => {
   const { chapters } = props
-  const drpUuid = uuid.v4()
 
   return (
-      <>
-        <Droppable key={drpUuid} droppableId={drpUuid}>
-        {(provided) => {
-          return (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
-                      {chapters.map((chapter: Chapter, index: number) => {
-                        return (
-                            <ChapterComponent key={index} chapter={chapter} id={chapter.id} >
-                                <Button />
-                            </ChapterComponent>
-                        )
-                      })
-                    }
-                </div>
-          )
-        }}
-            </Droppable>
-            <AddChapterButton />
-            {/* プレビューボタンをこの下に置く */}
-            {/*  <Preview Chapter={chapters} */}
+    <>
+      {chapters.map((chapter: Chapter, index: number) => {
+        return (
+          <>
+            <ChapterOrPages chapter={chapter} key={index} />
+            <AddIcon />
+            <ArrowDownIcon />
           </>
+        )
+      })}
+          {/* プレビューボタンをこの下に置く */}
+          {/*  <Preview Chapter={chapters} */}
+    </>
   )
 }
 
