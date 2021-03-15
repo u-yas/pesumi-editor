@@ -1,4 +1,4 @@
-import { Page } from '../../../../interfaces/projectType'
+import { Page } from '../../../../../interfaces/projectType'
 
 type Props = {
   command: Page

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import PagesComponent from './pagesComponent'
+import PagesComponent from '../Pages/pagesComponent'
 import { CloseButton, Icon as OpenButton } from '@chakra-ui/react'
 import { FaRegFolderOpen } from 'react-icons/fa'
-import ChapterComponent from './ChapterComponent'
+import ChapterComponent from '../Chapter/ChapterComponent'
 import { Chapter } from '../../../../interfaces/projectType'
 interface Props {
   chapter:Chapter

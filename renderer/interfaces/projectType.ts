@@ -41,7 +41,6 @@ export interface Page {
 }
 
 export interface Chapter {
-  kind:'chapter'
   label: string;
   id: string;
   pages: Page[];
@@ -62,8 +61,8 @@ export interface SettingBackgroundImage {
 }
 export interface SettingCharacter {
   name: string,
-  standingImage?: [{ label: string, filename: string}]
-  voice?:[ {label: string, fileName: string}]
+  standingImage?: { label: string, filename: string}[]
+  voice?: {label: string, fileName: string}[]
 }
 
 export interface Media {

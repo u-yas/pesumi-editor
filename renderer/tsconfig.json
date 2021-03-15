@@ -7,8 +7,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.d.ts"
-  ],
+    "**/*.d.ts",
+    "../**/*.config.js"
+, "../main/helpers/ipc/__test__/counter.test.ts"  ],
   "exclude": [
     "node_modules"
   ]

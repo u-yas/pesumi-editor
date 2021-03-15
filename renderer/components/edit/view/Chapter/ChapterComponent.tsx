@@ -4,6 +4,7 @@ import { AddIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { Chapter } from '../../../../interfaces/projectType'
 import { usePesumi } from '../../../../utils/customHooks/usePesumi'
+import { sumOfTextLength } from '../../../../utils/array/counter'
 // import OpenButton from './openButton'
 
 type Props = {
@@ -46,10 +47,11 @@ const ChapterComponent:React.FC<Props> = ({ chapter, index }: Props) => {
           borderColor="gray"
         >
           <Text fontSize="xs">文字数:</Text>
-          <Text fontSize="xs">{pesumiState.chapter[index].pages.ma}</Text>
+          {/* chapter[index]以下の総文字数 */}
+          <Text fontSize="xs">{sumOfTextLength(chapter.pages).toString()}</Text>
           <Stack spacing={2} />
           <Text fontSize="xs">ページ数:</Text>
-          <Text fontSize="xs">50</Text>
+          <Text fontSize="xs">{chapter.pages.length.toString()}</Text>
           <Stack spacing={2} />
         </Grid>
         <Grid templateColumns="repeat(3, 1fr)" gap={10}>
