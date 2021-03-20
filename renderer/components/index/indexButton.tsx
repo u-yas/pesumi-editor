@@ -16,7 +16,8 @@ const IndexButton:React.FC<Props> = (props:Props) => {
         mt="3vh"
         mb="3vh"
         onClick={() => props.onClick}
-        _active={{ bg: '#4AC699' }}
+        _active={{ transform: 'scale(0.98)' }}
+        _hover={{ backgroundColor: '#4AC699' }}
         width={['100px', '200px', '250px', '250px']}
         height={['50px', '70px', '100px', '90px']}
         borderRadius="10px"
@@ -24,17 +25,17 @@ const IndexButton:React.FC<Props> = (props:Props) => {
         boxShadow='lg'
       >
 
-        <Text
-          justifyContent="center"
-          alignItems="center"
-          fontSize={['md', '2xl', '3xl', '3xl']}
-          fontWeight="bold"
-          color='blackAlpha.900'
-        >
-          <div style={{ WebkitTextStrokeColor: 'white', WebkitTextStrokeWidth: '0.4px' }}>
-            {props.text}
-          </div>
-        </Text>
+      <div style={{ WebkitTextStrokeColor: 'white', WebkitTextStrokeWidth: '0.4px' }}>
+          <Text
+            justifyContent="center"
+            alignItems="center"
+            fontSize={['md', '2xl', '3xl', '3xl']}
+            fontWeight="bold"
+            color='blackAlpha.900'
+          >
+              {props.text}
+          </Text>
+        </div>
       </Box>
     </Link>
   )

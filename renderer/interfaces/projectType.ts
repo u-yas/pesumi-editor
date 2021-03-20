@@ -7,6 +7,8 @@ export type PesumiDataActionType =
   | 'init'
   | 'addPage' // 指定したインデックスにページを追加する
   | 'deletePage' // 指定したインデックスのページを削除する
+  | 'sortChapter'
+  | 'sortPages' // react-beautiful-dndで並び替える
   | 'addChapter' // ノードを指定したインデックスに付与する
   | 'deleteChapter' // ノードを削除する。削除した後の前後のchapterをつなげる
   | 'movePrevious' // 次のページに移動する
@@ -20,8 +22,11 @@ export interface PesumiDataAction {
   payloadProjectIndex?: number // ChapterやProjectの編集先の配列のインデックス
   payloadChapterIndex?: number
   payloadProject?:Project
+  payloadChapters?:Chapter[]
   payloadChapter?: Chapter
+  payloadPages?: Page[]
   payloadPage?: Page
+
 }
 
 export interface Author {
@@ -36,7 +41,6 @@ export interface Page {
 }
 
 export interface Chapter {
-  kind:'chapter'
   label: string;
   id: string;
   pages: Page[];
@@ -57,8 +61,8 @@ export interface SettingBackgroundImage {
 }
 export interface SettingCharacter {
   name: string,
-  standingImage?: [{ label: string, filename: string}]
-  voice?:[ {label: string, fileName: string}]
+  standingImage?: { label: string, filename: string}[]
+  voice?: {label: string, fileName: string}[]
 }
 
 export interface Media {

@@ -1,9 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "typeRoots": ["../@types/global.d.ts"]
-  },
-  "include": [
+    "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

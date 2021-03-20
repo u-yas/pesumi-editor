@@ -8,7 +8,7 @@ const CloudIcon = () => {
     <>
       <Icon
           as={BsCloudUpload}
-          boxSize="7"
+          boxSize="9"
           mr="5"
           onClick={() => isControlled ? setControlled(false) : setControlled(true)}
           onMouseLeave={() => setControlled(false)}
@@ -20,6 +20,7 @@ const CloudIcon = () => {
             rounded="md"
             shadow="md"
             p='40px'
+            fontSize='xl'
           >
             α版ではプロジェクトアップデート機能はご利用いただけません。
           </Box>

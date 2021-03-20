@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-	"plugin:react/recommended",
+	"plugin:react/recommended", 
 	"plugin:react-hooks/recommended", // React hooks rules
 	"plugin:jsx-a11y/recommended", // Accessibility rules
 	"plugin:@typescript-eslint/recommended", // TypeScript rules
@@ -20,7 +20,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "unused-imports"
     ],
     "rules": {
         // We will use TypeScript"s types for component props instead
@@ -33,16 +34,21 @@
         // This rule is not compatible with Next.js"s <Link /> components
         "jsx-a11y/anchor-is-valid": "off",
 	    "no-undef":"off",
-        // Why would you want unused vars?
-        "@typescript-eslint/no-unused-vars": ["error"],
+
         "@typescript-eslint/explicit-module-boundary-types": "off",
         // I suggest this setting for requiring return types on functions only where useful
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+		]
       },
     "settings": {
 	    "react":{
 		    "version":"detect"
 	    }
     },
-    "ignorePatterns": ["node_modules/*","jest.config.js","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
+    "ignorePatterns": ["*.js","stories/*","*.json","node_modules/*","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
 }

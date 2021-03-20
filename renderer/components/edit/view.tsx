@@ -1,43 +1,37 @@
-import { Button } from '@chakra-ui/react'
-import React from 'react'
-import { Droppable } from 'react-beautiful-dnd'
-import * as uuid from 'uuid'
-import { Chapter } from '../../interfaces/projectType'
-import AddChapterButton from './view/components/addChapterButton'
-import ChapterComponent from './view/components/ChapterComponent'
-type Props = {
+
+import { Flex, Stack } from '@chakra-ui/react'
+import { AddIcon, ArrowDownIcon } from '@chakra-ui/icons'
+import type { Chapter } from '../../interfaces/projectType'
+import { usePesumi } from '../../utils/customHooks/usePesumi'
+import { ChapterOrPages } from './view/components/chapterOrPages'
+
+interface Props {
   chapters: Chapter[] // chapterの中にpages[]のデータも入っている
 }
-// import PagesView from './view/components/pagesComponent'
-/**
- *pesumiState.Chapter[]のデータをmapで展開する
- */
+
 const View:React.FC<Props> = (props:Props) => {
   const { chapters } = props
-  const drpUuid = uuid.v4()
-
+  const { pesumiDispatch } = usePesumi()
   return (
-      <>
-        <Droppable key={drpUuid} droppableId={drpUuid}>
-        {(provided) => {
-          return (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
-                      {chapters.map((chapter: Chapter, index: number) => {
-                        return (
-                            <ChapterComponent key={index} chapter={chapter} id={chapter.id} >
-                                <Button />
-                            </ChapterComponent>
-                        )
-                      })
-                    }
-                </div>
-          )
-        }}
-            </Droppable>
-            <AddChapterButton />
-            {/* プレビューボタンをこの下に置く */}
-            {/*  <Preview Chapter={chapters} */}
-          </>
+    <>
+      {chapters.map((chapter: Chapter, index: number) => {
+        return (
+          <Flex
+            key={index}
+            flexDirection="column"
+          >
+            <ChapterOrPages chapter={chapter} key={index} />
+            <Flex justifyContent="space-around">
+              <Stack />
+              <ArrowDownIcon />
+              <AddIcon onClick={() => pesumiDispatch({ type: 'addChapter', payloadChapter: {} as Chapter })}/>
+            </Flex>
+          </Flex>
+        )
+      })}
+          {/* プレビューボタンをこの下に置く */}
+          {/*  <Preview Chapter={chapters} */}
+    </>
   )
 }
 

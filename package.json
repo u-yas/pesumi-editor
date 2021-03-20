@@ -5,6 +5,8 @@
   "version": "0.0.0",
   "author": "u-yas<pesumi-organization@protonmail.com>",
   "main": "app/background.js",
+
+
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' nextron",
     "build": "nextron build",
@@ -15,7 +17,8 @@
   },
   "dependencies": {
     "electron-serve": "^1.0.0",
-    "electron-store": "^6.0.1"
+    "electron-store": "^6.0.1",
+    "eslint-plugin-unused-imports": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -52,11 +55,11 @@
     "jest": "^26.6.3",
     "next": "^10.0.5",
     "nextron": "^6.0.3",
-    "re-resizable": "^6.9.0",
     "react": "^17.0.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
+    "react-split-pane": "0.1.92",
     "react-toastify": "^6.2.0",
     "redux": "^4.0.5",
     "rimraf": "^3.0.0",
