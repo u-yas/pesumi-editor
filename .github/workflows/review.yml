@@ -1,8 +1,8 @@
 name: reviewdog
 on: 
-  push:
-      branches:
-        - 'hoge'
+  pull_request:
+    branches:
+      - 'main'
 jobs:
   eslint:
     name: runner / eslint

@@ -9,7 +9,15 @@ files:
     filter:
       - package.json
       - app
-
+win:
+  target:
+    - portable
+    - nsis
+linux:
+  target:
+    - AppImage
+    - deb
+    - rpm
 publish:
   provider: github
   owner: u-yas
