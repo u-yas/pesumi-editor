@@ -2,7 +2,7 @@ name: reviewdog
 on: 
   push:
       branches:
-        - 'test'
+        - 'hoge'
 jobs:
   eslint:
     name: runner / eslint
