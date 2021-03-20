@@ -1,15 +1,11 @@
 {
   "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "typeRoots": ["../@types/global.d.ts"]
-  },
-  "include": [
+    "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.d.ts",
-    "../**/*.config.js"
-, "../main/helpers/ipc/__test__/counter.test.ts"  ],
+    "**/*.d.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
