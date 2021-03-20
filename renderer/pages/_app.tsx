@@ -11,7 +11,7 @@ const MyApp:React.FC <AppProps> = ({ Component, pageProps }: AppProps) => {
           <ChakraProvider>
             <Header />
             <Component {...pageProps} />
-            </ChakraProvider>
+          </ChakraProvider>
         </PesumiProvider>
     </>
   )
