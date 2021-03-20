@@ -9,6 +9,7 @@ files:
     filter:
       - package.json
       - app
+
 publish:
   provider: github
   owner: u-yas
