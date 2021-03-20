@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-	"plugin:react/recommended",
+	"plugin:react/recommended", 
 	"plugin:react-hooks/recommended", // React hooks rules
 	"plugin:jsx-a11y/recommended", // Accessibility rules
 	"plugin:@typescript-eslint/recommended", // TypeScript rules
@@ -50,5 +50,5 @@
 		    "version":"detect"
 	    }
     },
-    "ignorePatterns": ["node_modules/*","jest.config.js","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
+    "ignorePatterns": ["*.js","stories/*","*.json","node_modules/*","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
 }
