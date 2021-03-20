@@ -23,6 +23,7 @@ jobs:
           node-version: 14
       # - name: Run eslint
       #   run: npm i && ./node_modules/eslint/bin/eslint.js --fix .
+      
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
