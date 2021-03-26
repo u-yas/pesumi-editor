@@ -22,30 +22,21 @@ jobs:
         with:
           node-version: 14
 
-      # osごとに処理を分ける
-      - name: Cache node_modules for ubuntu
-        id: node_modules_cache_id_ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        uses: actions/cache@v2
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
         with:
-          path: ~/.npm
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Cache node-modules for Windows
-        id: node_modules_cache_id_windows
-        if: matrix.os == 'windows-latest'
-        uses: actions/cache@v2
-        with:
-          path: ~\AppData\Local\dub
-          key: ${{ runner.os }}-dub-${{ hashFiles('**/dub.json') }}
-          restore-keys: |
-            ${{ runner.os }}-dub-
+      - run: npm ci
 
-      - name: Install modules
-        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
-        run: npm --check-files --frozen-lockfile --non-interactive
+      - name: Eslint --fix
 
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
