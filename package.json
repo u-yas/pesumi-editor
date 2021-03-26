@@ -11,6 +11,7 @@
     "test": "jest",
     "lint-fix": "eslint --fix .",
     "postinstall": "electron-builder install-app-deps",
+    "release": "yarn test && yarn lint-fix && yarn build && ",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
