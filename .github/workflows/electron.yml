@@ -26,16 +26,17 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ env.cache-name }}-
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-npm-${{ env.cache-name }}-
+            ${{ runner.os }}-npm-
             ${{ runner.os }}-
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: npm i
+      - run: npm cache clean
+      - run: npm install
 
       - name: Eslint --fix
         run: npm run lint-fix
