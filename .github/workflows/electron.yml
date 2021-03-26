@@ -37,6 +37,7 @@ jobs:
       - run: npm ci
 
       - name: Eslint --fix
+        run: npm run lint-fix
 
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
