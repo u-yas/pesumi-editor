@@ -37,12 +37,12 @@ jobs:
         id: node_modules_cache_id_windows
         if: matrix.os == 'windows-latest'
         uses: actions/cache@v2
-          with:
-            path: ~\AppData\Local\dub
-            key: ${{ runner.os }}-dub-${{ hashFiles('**/dub.json') }}
-            restore-keys: |
-              ${{ runner.os }}-dub-
-              
+        with:
+          path: ~\AppData\Local\dub
+          key: ${{ runner.os }}-dub-${{ hashFiles('**/dub.json') }}
+          restore-keys: |
+            ${{ runner.os }}-dub-
+
       - name: Install modules
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: npm --check-files --frozen-lockfile --non-interactive
@@ -53,5 +53,4 @@ jobs:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
-          draft: true
           release: true
