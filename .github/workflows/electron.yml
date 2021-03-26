@@ -3,42 +3,27 @@ name: Build/release
 on:
   push:
     branches:
-      - "ci"
+      - "main"
+      - "release"
 
 jobs:
   release:
+    runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
-      - name: Determine npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Restore npm cache
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-${{ env.cache-name }}-
-            ${{ runner.os }}-npm-
-            ${{ runner.os }}-
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: npm ci
-
-      - name: Eslint --fix
-        run: npm run lint-fix
+      - name: Run eslint
+        run: npm i && ./node_modules/eslint/bin/eslint.js --fix .
 
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
@@ -46,4 +31,7 @@ jobs:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
+
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
           release: true
