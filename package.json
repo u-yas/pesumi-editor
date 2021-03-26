@@ -9,6 +9,7 @@
     "dev": "NODE_OPTIONS='--inspect' nextron",
     "build": "nextron build",
     "test": "jest",
+    "lint-fix": "eslint --fix .",
     "postinstall": "electron-builder install-app-deps",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
