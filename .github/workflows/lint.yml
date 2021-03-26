@@ -1,17 +1,14 @@
-name: Eslint
-
+name: reviewdog
 on: push
-
 jobs:
-  Test:
+  eslint:
+    name: runner / eslint
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v1
-
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v1
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
         with:
-          node-version: 14
-      - name: Run eslint
-        run: npm i && ./node_modules/eslint/bin/eslint.js --fix .
+          github_token: ${{ github.token }}
+          reporter: github-pr-review # Change reporter.
+          eslint_flags: 'src/'
