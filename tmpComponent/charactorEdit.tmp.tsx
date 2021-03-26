@@ -63,35 +63,28 @@ const CharacterEdit = () => {
               {/* 立ち絵の名称のラベル、立ち絵のファイル名を読み込む
                 (ファイル名を project/character/hoge/image/${ファイル名})
                 の形式で保存する */}
-              <Editable
-                placeholder="立ち絵"
-                startWithEditView
-              >
+              <Editable placeholder="立ち絵" startWithEditView>
                 <EditableInput justifyContent="center" mt="auto" />
                 <EditablePreview justifyContent="center" mt="auto" />
               </Editable>
               {/* <Text>
                 {file}
               </Text> */}
-            <Box
-              // ml={["10rem", "12rem", "15rem", "18rem"]}
-              pl={['15px', '15px', '15px', '15px']}
-              pr={['15px', '15px', '15px', '15px']}
-              ml="auto"
-              outline="dotted"
-              color="blackAlpha.200"
-              minWidth={['13rem', '15rem', '18rem', '20rem']}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              {/* ファイルをインポートできたら isFile?ファイル名を乗せる＋downloadIcon:downloadIconの形にする　*/}
-              <DownloadIcon
-                color="blackAlpha.400"
-                textAlign="center"
-              />
-
-            </Box>
+              <Box
+                // ml={["10rem", "12rem", "15rem", "18rem"]}
+                pl={['15px', '15px', '15px', '15px']}
+                pr={['15px', '15px', '15px', '15px']}
+                ml="auto"
+                outline="dotted"
+                color="blackAlpha.200"
+                minWidth={['13rem', '15rem', '18rem', '20rem']}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                {/* ファイルをインポートできたら isFile?ファイル名を乗せる＋downloadIcon:downloadIconの形にする */}
+                <DownloadIcon color="blackAlpha.400" textAlign="center" />
+              </Box>
             </Flex>
           </AccordionPanel>
         </AccordionItem>
