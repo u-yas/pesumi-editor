@@ -1,9 +1,9 @@
 name: Build/release
 
-on: 
+on:
   push:
-    branches: 
-      - 'main'
+    branches:
+      - "ci"
 
 jobs:
   release:
@@ -21,9 +21,32 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      # - name: Run eslint
-      #   run: npm i && ./node_modules/eslint/bin/eslint.js --fix .
-      
+
+      # osごとに処理を分ける
+      - name: Cache node_modules for ubuntu
+        id: node_modules_cache_id_ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Cache node-modules for Windows
+        id: node_modules_cache_id_windows
+        if: matrix.os == 'windows-latest'
+        uses: actions/cache@v2
+          with:
+            path: ~\AppData\Local\dub
+            key: ${{ runner.os }}-dub-${{ hashFiles('**/dub.json') }}
+            restore-keys: |
+              ${{ runner.os }}-dub-
+              
+      - name: Install modules
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: npm --check-files --frozen-lockfile --non-interactive
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
@@ -31,6 +54,4 @@ jobs:
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
           draft: true
-          files:
-            
           release: true
