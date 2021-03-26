@@ -1,4 +1,4 @@
-name: Build/release
+name: Eslint
 
 on: push
 
@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: 14
       - name: Run eslint
-        run: npm i && ./node_modules/eslint/bin/eslint.js --fix .
+        run: rm -rf package-lock.json && npm cache clean --force && npm cache verify && npm i && ./node_modules/eslint/bin/eslint.js --fix .
