@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: 14
       - run: npm cache clean --force
-      - run: npm ci
+      - run: npm install
 
       - name: Eslint --fix
         run: npm run lint-fix
