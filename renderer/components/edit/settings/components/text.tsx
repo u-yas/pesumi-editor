@@ -1,5 +1,5 @@
 
-const Text:React.FC = () => {
+const Text: React.FC = () => {
   return (
     <>
     </>

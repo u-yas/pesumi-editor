@@ -1,7 +1,8 @@
 import { NextPage } from 'next'
+
 import Link from 'next/link'
 
-const AboutPage:NextPage = () => (
+const AboutPage: NextPage = () => (
     <div>
       <h1>PeSuMi とは</h1>
       <p>PeSuMi Editorで作成したゲームはPeSuMiシアターに登録することで閲覧できます。

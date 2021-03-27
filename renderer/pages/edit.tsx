@@ -17,7 +17,7 @@ const styles = {
  * 新規の場合->プロジェクト名を入力させる
  * 既存のファイルを開く場合は、エクスポートする既存のファイルのフォルダを選択する
  */
-const EditPage:NextPage = () => {
+const EditPage: NextPage = () => {
   const { pesumiState } = usePesumi()
   // pesumiStateの変化に伴う副作用を管理する
   // useEffect(() => {

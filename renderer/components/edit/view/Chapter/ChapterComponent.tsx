@@ -7,7 +7,7 @@ import { usePesumi } from '../../../../utils/customHooks/usePesumi'
 import { sumOfTextLength } from '../../../../utils/array/counter'
 // import OpenButton from './openButton'
 
-type Props = {
+interface Props {
   chapter: Chapter
   index: number
 }
@@ -15,7 +15,7 @@ type Props = {
  * クリックしたときnodeが展開して、ページの配列とテキストが表示されるようにする
  * 必要: Chapterの追加と削除できるボタン
  */
-const ChapterComponent:React.FC<Props> = ({ chapter, index }: Props) => {
+const ChapterComponent: React.FC<Props> = ({ chapter, index }: Props) => {
   const { pesumiState } = usePesumi()
   return (
     <Flex flexDirection="column">

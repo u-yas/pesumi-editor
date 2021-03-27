@@ -1,5 +1,5 @@
 
-const AddNode:React.FC = () => {
+const AddNode: React.FC = () => {
   return (
     <div>
     </div>

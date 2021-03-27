@@ -6,8 +6,8 @@ import fs from 'fs'
  *  @param mainWindow メインウインドウ
  *
  */
-const openStandingCharacterImage = (characterName:string, mainWindow:Electron.BrowserWindow):Promise<string> => {
-  return new Promise((resolve, reject) => {
+const openStandingCharacterImage = async (characterName: string, mainWindow: Electron.BrowserWindow): Promise<string> => {
+  return await new Promise((resolve, reject) => {
     // ダイアログを選択してファイルのパスを取得、そのパスからプロジェクトフォルダにあるキャラクター名のフォルダにコピーする
     dialog.showOpenDialog(mainWindow, {
       buttonLabel: '開く',
@@ -25,7 +25,7 @@ const openStandingCharacterImage = (characterName:string, mainWindow:Electron.Br
         else resolve(returnValue.filePaths[0])
       })
     }).catch(Error => {
-      reject(console.log('openStandingCharacterImageでエラーが発生しました¥n' + Error))
+      reject(console.log(Error))
     })
   })
 }

@@ -1,10 +1,10 @@
 import { Box, Text } from '@chakra-ui/react'
 
-type Props = {
-  colorCode: string,
+interface Props {
+  colorCode: string
   text: string
 }
-const MediaButton:React.FC<Props> = (props:Props) => {
+const MediaButton: React.FC<Props> = (props: Props) => {
   return (
     <>
      <Box

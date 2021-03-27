@@ -85,7 +85,7 @@ const CharacterEdit = () => {
               justifyContent="center"
               alignItems="center"
             >
-              {/* ファイルをインポートできたら isFile?ファイル名を乗せる＋downloadIcon:downloadIconの形にする　*/}
+              {/* ファイルをインポートできたら isFile?ファイル名を乗せる＋downloadIcon:downloadIconの形にする */}
               <DownloadIcon
                 color="blackAlpha.400"
                 textAlign="center"

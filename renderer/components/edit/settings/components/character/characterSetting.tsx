@@ -1,5 +1,5 @@
 
-const CharacterSetting:React.FC = () => {
+const CharacterSetting: React.FC = () => {
   return (
     <>
     </>

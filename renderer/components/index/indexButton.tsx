@@ -1,11 +1,11 @@
 import { Box, Text } from '@chakra-ui/react'
 import Link from 'next/link'
-type Props = {
+interface Props {
   text: string
   href?: string
-  onClick?:(event: React.MouseEvent<HTMLInputElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void
 }
-const IndexButton:React.FC<Props> = (props:Props) => {
+const IndexButton: React.FC<Props> = (props: Props) => {
   return (
   <Link href={props.href === undefined ? '/' : props.href}>
       <Box

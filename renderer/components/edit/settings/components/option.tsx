@@ -1,5 +1,5 @@
 
-const Option:React.FC = () => {
+const Option: React.FC = () => {
   return (
     <>
     </>

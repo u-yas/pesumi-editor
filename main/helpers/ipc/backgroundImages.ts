@@ -2,8 +2,8 @@ import { dialog } from 'electron'
 import fs from 'fs'
 
 // 変更する
-export const changeBackgroundImages = (oldImageFile, mainWindow) => {
-  return new Promise((resolve, reject) => {
+export const changeBackgroundImages = async (oldImageFile: string, mainWindow: Electron.BrowserWindow) => {
+  return await new Promise((resolve, reject) => {
     // ダイアログを選択してファイルのパスを取得、そのパスからプロジェクトフォルダにあるキャラクター名のフォルダにコピーする
     const returnValue = dialog.showOpenDialogSync(mainWindow, {
       buttonLabel: '開く',
@@ -19,7 +19,7 @@ export const changeBackgroundImages = (oldImageFile, mainWindow) => {
       fs.copyFileSync(returnValue[0], `./background/${oldImageFile}`)
       resolve(returnValue[0])
     } catch (Error) {
-      reject(console.log('openStandingCharacterImageでエラーが発生しました¥n' + Error))
+      reject(console.log(Error))
     }
   })
 }

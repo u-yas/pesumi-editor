@@ -17,4 +17,4 @@ export type GameCommand =
   | 'changeCharacter' // キャラクターを入れ替える
   | 'changeCharacterStandingImage' // キャラクターの立ち絵を変える
   | 'setSe'
-  | 'deleteSe';
+  | 'deleteSe'

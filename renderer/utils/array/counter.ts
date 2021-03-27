@@ -5,7 +5,7 @@ import { Page } from '../../interfaces/projectType'
  * @type page[]
  * @returns totalTextSize number
  */
-export const sumOfTextLength = (pages:Page[]):number => {
+export const sumOfTextLength = (pages: Page[]): number => {
   let sum = 0
   pages.forEach((page) => {
     sum = sum + page.content.length

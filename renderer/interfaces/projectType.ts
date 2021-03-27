@@ -12,7 +12,7 @@ export type PesumiDataActionType =
   | 'addChapter' // ノードを指定したインデックスに付与する
   | 'deleteChapter' // ノードを削除する。削除した後の前後のchapterをつなげる
   | 'movePrevious' // 次のページに移動する
-  | 'moveNext';
+  | 'moveNext'
 
 /**
    * Editorで編集するPesumiDataのreducerで使うaction type
@@ -21,8 +21,8 @@ export interface PesumiDataAction {
   type: PesumiDataActionType
   payloadProjectIndex?: number // ChapterやProjectの編集先の配列のインデックス
   payloadChapterIndex?: number
-  payloadProject?:Project
-  payloadChapters?:Chapter[]
+  payloadProject?: Project
+  payloadChapters?: Chapter[]
   payloadChapter?: Chapter
   payloadPages?: Page[]
   payloadPage?: Page
@@ -30,20 +30,20 @@ export interface PesumiDataAction {
 }
 
 export interface Author {
-  writer: string[];
-  illustrator: string[];
+  writer: string[]
+  illustrator: string[]
 }
 
 export interface Page {
-  id:string
-  command: GameCommand; //
-  content?: string; // コンテンツのpathや本文
+  id: string
+  command: GameCommand
+  content?: string // コンテンツのpathや本文
 }
 
 export interface Chapter {
-  label: string;
-  id: string;
-  pages: Page[];
+  label: string
+  id: string
+  pages: Page[]
 }
 
 export interface SettingBgm {
@@ -52,7 +52,7 @@ export interface SettingBgm {
 }
 
 export interface SettingSe {
-  label:string
+  label: string
   fileName: string
 }
 export interface SettingBackgroundImage {
@@ -60,21 +60,21 @@ export interface SettingBackgroundImage {
   fileName: string
 }
 export interface SettingCharacter {
-  name: string,
-  standingImage?: { label: string, filename: string}[]
-  voice?: {label: string, fileName: string}[]
+  name: string
+  standingImage?: Array<{ label: string, filename: string}>
+  voice?: Array<{label: string, fileName: string}>
 }
 
 export interface Media {
-  character: SettingCharacter[];
-  bgImage: SettingBackgroundImage[];
-  bgm: SettingBgm[];
-  se: SettingSe[];
+  character: SettingCharacter[]
+  bgImage: SettingBackgroundImage[]
+  bgm: SettingBgm[]
+  se: SettingSe[]
 }
 export interface Project {
-  projectName: string;
-  projectId: string;
-  author: Author;
-  media: Media;
-  chapter: Chapter[];
+  projectName: string
+  projectId: string
+  author: Author
+  media: Media
+  chapter: Chapter[]
 }

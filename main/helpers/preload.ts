@@ -16,8 +16,8 @@ export interface MyIpcRenderer {
 }
 
 contextBridge.exposeInMainWorld('myIpcRenderer', {
-  openFolder: async ():Promise<ReturnOpenFolder | null> => {
-    const returnValue:ReturnOpenFolder | null = await ipcRenderer.invoke('openProjectFolder')
+  openFolder: async (): Promise<ReturnOpenFolder | null> => {
+    const returnValue: ReturnOpenFolder | null = await ipcRenderer.invoke('openProjectFolder')
     return returnValue
   }
 

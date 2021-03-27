@@ -11,7 +11,7 @@ import { useRouter } from 'next/dist/client/router'
 // 「作成したゲームを配布する」、
 // 「このソフトの使い方」の画面をそれぞれ用意する
 
-const IndexPage:NextPage = () => {
+const IndexPage: NextPage = () => {
   const { pesumiState, pesumiDispatch } = usePesumi()
   const router = useRouter()
   if (pesumiState.projectName == null) alert('pesumiStateはぬる')
@@ -38,7 +38,7 @@ const IndexPage:NextPage = () => {
                 // ipcRenderを使えるようにする
                 if (window.myIpcRenderer) {
                   (async () => {
-                    const value:ReturnOpenFolder | null = await window.myIpcRenderer.openFolder()
+                    const value: ReturnOpenFolder | null = await window.myIpcRenderer.openFolder()
                     // value!==nullのときは、つまりダイアログでキャンセルが押された時の処理
                     if (value !== null) {
                       pesumiDispatch({ type: 'init', payloadProject: value.projectJsonData })

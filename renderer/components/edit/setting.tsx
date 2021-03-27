@@ -7,7 +7,7 @@ import { Box } from '@chakra-ui/react'
 /**
  * editorのステータスによって
  */
-const Setting:React.FC = () => {
+const Setting: React.FC = () => {
   return (
     <Box
       display='flex'

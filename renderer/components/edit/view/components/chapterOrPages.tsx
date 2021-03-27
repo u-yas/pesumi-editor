@@ -5,10 +5,10 @@ import { FaRegFolderOpen } from 'react-icons/fa'
 import ChapterComponent from '../Chapter/ChapterComponent'
 import { Chapter } from '../../../../interfaces/projectType'
 interface Props {
-  chapter:Chapter
-  key:number
+  chapter: Chapter
+  key: number
 }
-export const ChapterOrPages:React.VFC<Props> = ({ chapter, key }:Props) => {
+export const ChapterOrPages: React.VFC<Props> = ({ chapter, key }: Props) => {
   const [status, setStatus] = useState(false)
 
   return (

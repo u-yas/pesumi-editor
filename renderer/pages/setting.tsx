@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 
-const Setting:NextPage = () => {
+const Setting: NextPage = () => {
   return (
     <>
       setting page
