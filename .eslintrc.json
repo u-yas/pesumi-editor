@@ -4,51 +4,49 @@
         "es2021": true
     },
     "extends": [
-	"plugin:react/recommended", 
-	"plugin:react-hooks/recommended", // React hooks rules
-	"plugin:jsx-a11y/recommended", // Accessibility rules
-	"plugin:@typescript-eslint/recommended", // TypeScript rules
-    "standard"
+        "plugin:react-hooks/recommended", // React hooks rules
+        "plugin:jsx-a11y/recommended", // Accessibility rules
+        "standard-with-typescript",
+        "standard-react"
     ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "impliedStrict": true
         },
-        "ecmaVersion": 12,
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "unused-imports"
-    ],
     "rules": {
-        // We will use TypeScript"s types for component props instead
-        "react/prop-types": "off",
-        "jsx-a11y/click-events-have-key-events": "off",
-        "jsx-a11y/no-static-element-interactions":"off",
-        // No need to import React when using Next.js
+        "@typescript-eslint/no-misused-promises":"off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/explicit-function-return-type":"off",
         "react/react-in-jsx-scope": "off",
-        "no-use-before-define": "off",
-        // This rule is not compatible with Next.js"s <Link /> components
-        "jsx-a11y/anchor-is-valid": "off",
-	    "no-undef":"off",
-
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        // I suggest this setting for requiring return types on functions only where useful
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "unused-imports/no-unused-imports": "error",
-		"unused-imports/no-unused-vars": [
-			"warn",
-			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
-		]
-      },
-    "settings": {
-	    "react":{
-		    "version":"detect"
-	    }
+        "import/no-duplicates": "off",
+        "strict-boolean-expressions": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/anchor-is-valid": "off"
     },
-    "ignorePatterns": ["*.js","stories/*","*.json","node_modules/*","resources","dist/*","app/*","renderer/.next/*","renderer/out/*","renderer/components/dist/*","renderer/pages/dist/*"]
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
+    "ignorePatterns": [
+        "*.js",
+        "stories/*",
+        "*.json",
+        "node_modules/*",
+        "resources",
+        "dist/*",
+        "app/*",
+        "renderer/.next/*",
+        "renderer/out/*",
+        "**/*.d.ts",
+        "**/*.config.js",
+        "renderer/components/dist/*",
+        "renderer/pages/dist/*"
+    ]
 }

@@ -1,5 +1,5 @@
 
-const SeSetting:React.FC = () => {
+const SeSetting: React.FC = () => {
   return (
     <>
     </>

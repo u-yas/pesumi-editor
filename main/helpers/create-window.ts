@@ -33,7 +33,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     }
   }
 
-  const windowWithinBounds = (windowState, bounds) => {
+  const windowWithinBounds = (windowState: { x: number, y: number, width: number, height: number }, bounds: Electron.Rectangle) => {
     return (
       windowState.x >= bounds.x &&
       windowState.y >= bounds.y &&

@@ -1,11 +1,11 @@
 import { ReturnOpenFolder } from '../../main/helpers/ipc/openProjectFolder'
 declare global{
   interface Baka {
-    name:string
+    name: string
   }
 
 }
 // electronのcontextIsolationBridgeで使う
- interface MyIpcRenderer {
+interface MyIpcRenderer {
   openFolder: () => Promise<ReturnOpenFolder | null>
 }

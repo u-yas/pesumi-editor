@@ -3,7 +3,7 @@ import React from 'react'
 import AccoutIcon from './components/accountIcon'
 import CloudIcon from './components/cloudIcon'
 import Link from 'next/link'
-const Header:React.FC = () => {
+const Header: React.FC = () => {
   return (
     <>
       <Flex

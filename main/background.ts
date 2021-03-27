@@ -86,7 +86,7 @@ ipcMain.handle('openProjectFolder', async () => {
 })
 
 // message[0]とかは後できちんとした型を用意する
-ipcMain.on('importFile', async (_event:IpcMainEvent, characterName:string) => {
+ipcMain.on('importFile', async (_event: IpcMainEvent, characterName: string) => {
   // value<-ipcRenderから送られてくるデータ
   return await openStandingCharacterImage(characterName, mainWindow)
 })

@@ -10,8 +10,8 @@ export interface ReturnOpenFolder {
  * フォルダを開くダイアログが出てきて、フォルダーのpathとJSONのデータを返す
  * @param mainWindow :Electron.BrowserWindow
  */
-export const openProjectFolder = (mainWindow:Electron.BrowserWindow):Promise<ReturnOpenFolder| null> => {
-  return new Promise((resolve) => {
+export const openProjectFolder = async (mainWindow: Electron.BrowserWindow): Promise<ReturnOpenFolder| null> => {
+  return await new Promise((resolve) => {
     const folderPath = dialog.showOpenDialogSync(mainWindow, {
       buttonLabel: '開く',
       properties: [
@@ -23,8 +23,8 @@ export const openProjectFolder = (mainWindow:Electron.BrowserWindow):Promise<Ret
     } else {
       try {
         const value = readFileSync(`${folderPath[0]}/project.json`, { encoding: 'utf-8' })
-        const returnValue:ReturnOpenFolder = {
-          path: folderPath[0] as string,
+        const returnValue: ReturnOpenFolder = {
+          path: folderPath[0],
           projectJsonData: JSON.parse(value) as Project
         }
         resolve(returnValue)

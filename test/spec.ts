@@ -8,15 +8,15 @@ app.start().then(() => {
   return app.browserWindow.isVisible()
 }).then(isVisible => {
   assert.strictEqual(isVisible, true)
-}).then(function () {
+}).then(async function () {
   // Get the window's title
-  return app.client.getTitle()
+  return await app.client.getTitle()
 }).then(function (title) {
   // Verify the window's title
   assert.strictEqual(title, 'My App')
-}).then(function () {
+}).then(async function () {
   // Stop the application
-  return app.stop()
+  return await app.stop()
 }).catch(function (error) {
   // Log any failures
   console.error('Test failed', error.message)

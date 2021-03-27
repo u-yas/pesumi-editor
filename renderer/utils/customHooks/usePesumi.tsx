@@ -1,15 +1,16 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, ReactNode, useContext, useReducer } from 'react'
 import { PesumiDataAction, Project } from '../../interfaces/projectType'
 // const pesumiContext = createContext({} as any)
 // export const usePesumi =
-type PesumIContext = {
-  pesumiState:Project,
-  pesumiDispatch:React.Dispatch<PesumiDataAction>
+interface PesumiContext {
+  pesumiState: Project
+  pesumiDispatch: React.Dispatch<PesumiDataAction>
 }
+
 /**
  * reducerの初期データ
  */
-export const initialState:Project = {
+export const initialState: Project = {
   projectName: '',
   projectId: '',
   media: {
@@ -24,13 +25,17 @@ export const initialState:Project = {
   },
   chapter: []
 }
+const initialPesumiContext: PesumiContext = {
+  pesumiState: initialState,
+  pesumiDispatch: () => {}
+}
 /**
  *
  *pesumiDataの管理用コンテキスト
  */
-export const pesumiDataContext = createContext({} as PesumIContext)
+export const pesumiDataContext = createContext(initialPesumiContext)
 
-export const pesumiDataReducer = (state: Project, action:PesumiDataAction):Project => {
+export const pesumiDataReducer = (state: Project, action: PesumiDataAction): Project => {
   switch (action.type) {
     // payloadで指定したデータで初期化する
     case 'init':
@@ -62,7 +67,7 @@ export const pesumiDataReducer = (state: Project, action:PesumiDataAction):Proje
         state.chapter.splice(action.payloadChapterIndex)
         return state
       } else {
-        throw console.error('reducerのdeleteChapterが正常に処理できなかった')
+        throw Error('reducerのdeleteChapterが正常に処理できなかった')
       }
     default :
       return state
@@ -70,14 +75,17 @@ export const pesumiDataReducer = (state: Project, action:PesumiDataAction):Proje
 }
 
 // カスタムhooks
-export const usePesumi = ():{ pesumiState: Project; pesumiDispatch: React.Dispatch<PesumiDataAction>} => useContext(pesumiDataContext)
+export const usePesumi = (): { pesumiState: Project, pesumiDispatch: React.Dispatch<PesumiDataAction>} => useContext(pesumiDataContext)
 
-const PesumiProvider:React.FC = (props) => {
+interface Props {
+  children: ReactNode | ReactNode[]
+}
+const PesumiProvider: React.FC<{children}> = ({ children }: Props) => {
   const [pesumiState, pesumiDispatch] = useReducer(pesumiDataReducer, initialState)
 
   return (
     <pesumiDataContext.Provider value={{ pesumiState, pesumiDispatch }} >
-        {props.children}
+        {children}
     </pesumiDataContext.Provider>
   )
 }

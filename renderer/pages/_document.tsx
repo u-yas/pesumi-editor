@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  render ():JSX.Element {
+  render (): JSX.Element {
     return (
       <Html style={{ height: '100%' }}>
       <Head>

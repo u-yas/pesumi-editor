@@ -11,14 +11,18 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "strictNullChecks": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "typeRoots": ["renderer/@types","node_modules/@types"],
+    "typeRoots": [
+      "renderer/@types",
+      "node_modules/@types"
+    ],
   },
   "exclude": [
     "node_modules",

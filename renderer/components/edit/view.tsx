@@ -4,12 +4,12 @@ import { AddIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import type { Chapter } from '../../interfaces/projectType'
 import { usePesumi } from '../../utils/customHooks/usePesumi'
 import { ChapterOrPages } from './view/components/chapterOrPages'
+import { initChapter } from '../../utils/initVariable'
 
 interface Props {
   chapters: Chapter[] // chapterの中にpages[]のデータも入っている
 }
-
-const View:React.FC<Props> = (props:Props) => {
+const View: React.FC<Props> = (props: Props) => {
   const { chapters } = props
   const { pesumiDispatch } = usePesumi()
   return (
@@ -24,7 +24,7 @@ const View:React.FC<Props> = (props:Props) => {
             <Flex justifyContent="space-around">
               <Stack />
               <ArrowDownIcon />
-              <AddIcon onClick={() => pesumiDispatch({ type: 'addChapter', payloadChapter: {} as Chapter })}/>
+              <AddIcon onClick={() => pesumiDispatch({ type: 'addChapter', payloadChapter: initChapter })}/>
             </Flex>
           </Flex>
         )

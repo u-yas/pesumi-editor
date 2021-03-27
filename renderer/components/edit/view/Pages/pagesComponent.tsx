@@ -2,11 +2,11 @@ import { Flex } from '@chakra-ui/react'
 import { Page } from '../../../../interfaces/projectType'
 import CommandComponent from './Command/commandComponent'
 
-type Props = {
+interface Props {
   pages: Page[]
 }
 
-const PagesComponent:React.FC<Props> = (props:Props) => {
+const PagesComponent: React.FC<Props> = (props: Props) => {
   const { pages } = props
 
   return (

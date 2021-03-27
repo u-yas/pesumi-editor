@@ -2,7 +2,7 @@ import { Icon, Box, Slide } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { IoPersonCircleOutline } from 'react-icons/io5'
 
-const AccoutIcon:React.FC = () => {
+const AccoutIcon: React.FC = () => {
   const [isControlled, setControlled] = useState(false)
 
   return (
