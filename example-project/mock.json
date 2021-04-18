@@ -1,0 +1,32 @@
+// backnumber
+// metadata.json
+{
+// インデックスjson
+  "name": "description",
+  "author": "pompom",
+  "description": "これは検証用のデータです",
+  "media" : {
+    "character": [
+      {
+        "name": "hogehoge",
+        "description": "こいつは主人公です",
+        "images": [
+          {
+            "label": "普通の顔",
+            "path": "feoahfoaofiea/feoaf.png" // <-cloud storageのファイルパス
+
+          },
+          {
+            "label": "怒った顔",
+            "path": "feoahfoaofiea/feoaf.png" // <-cloud storageのファイルパス
+            
+          }          {
+            "label": "嬉しい顔",
+            "path": "feoahfoaofiea/feoaf.png" // <-cloud storageのファイルパス
+            
+          }
+        ]
+      }
+    ]
+  }
+}
