@@ -10,8 +10,7 @@
 の母音と子音を分解して、それぞれを混ぜ合わせた造語
 ### 完成イメージ画像
 完成イメージ画像です(製作途中)
-https://www.figma.com/file/bKYJGsfxFKgcsNnWXbSgI4/PeSuMi-Editor?node-id=0%3A1
-
+https://framer.com/projects/tJbDFG6RuH8Zm71m8hg7-5Kjo5
 ### ライセンス
 - 現在開発中のwebサイト、PeSuMi(※開発中)で公開するために利用する場合のみ、商用利用できます。
 - ソースコードや、バイナリの再配布は禁止しております。
